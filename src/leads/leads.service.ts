@@ -7,6 +7,7 @@ import { PackagesService } from '../packages/packages.service';
 import { normalizeVnPhone } from '../common/utils/phone.util';
 import { LeadRateLimitService } from './lead-rate-limit.service';
 import { LeadStatus } from '../common/enums';
+import { toLeadPublicItem, toLeadPublicList } from './lead-public.mapper';
 
 @Injectable()
 export class LeadsService {
@@ -59,7 +60,52 @@ export class LeadsService {
       id: doc._id.toString(),
       status: doc.status,
       createdAt: doc.get('createdAt') as Date,
+      fullName: doc.fullName,
+      phone: doc.phone,
+      installAddress: doc.installAddress,
+      packageId: packageId?.toString() ?? null,
+      packageSnapshot,
     };
+  }
+
+  /** Tra cứu đơn đã gửi theo SĐT (không cần đăng nhập). */
+  async findHistoryByPhone(phoneRaw: string, opts: { ip?: string }) {
+    const phone = normalizeVnPhone(phoneRaw);
+    if (!phone) {
+      throw new BadRequestException('Số điện thoại không hợp lệ');
+    }
+    this.rate.checkLookupByPhone(opts.ip ?? 'unknown', phone);
+
+    const docs = await this.model
+      .find({ phone })
+      .sort({ createdAt: -1 })
+      .limit(50)
+      .lean()
+      .exec();
+
+    return {
+      phone,
+      total: docs.length,
+      items: toLeadPublicList(docs as Record<string, unknown>[]),
+    };
+  }
+
+  /** Chi tiết một đơn — chỉ khi SĐT khớp (dùng sau tra cứu). */
+  async findOnePublicByIdAndPhone(id: string, phoneRaw: string, opts: { ip?: string }) {
+    const phone = normalizeVnPhone(phoneRaw);
+    if (!phone) {
+      throw new BadRequestException('Số điện thoại không hợp lệ');
+    }
+    if (!Types.ObjectId.isValid(id)) {
+      throw new NotFoundException('Không tìm thấy đơn đăng ký');
+    }
+    this.rate.checkLookupByPhone(opts.ip ?? 'unknown', phone);
+
+    const doc = await this.model.findOne({ _id: id, phone }).lean().exec();
+    if (!doc) {
+      throw new NotFoundException('Không tìm thấy đơn đăng ký với số điện thoại này');
+    }
+    return toLeadPublicItem(doc as Record<string, unknown>);
   }
 
   findForCustomer(customerId: string, page: number, limit: number) {

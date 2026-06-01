@@ -1,7 +1,7 @@
 /**
  * Thiết lập lại database app (telecom_landing):
- * - Xóa sạch 4 collection: packages, admins, customers, leads
- * - Import 20 gói từ data/packages.seed.json
+ * - Xóa sạch: packages, admins, customers, leads, menus
+ * - Import gói từ data/packages.seed.json + menu từ data/menus.seed.json
  * - Tạo admin theo ADMIN_SEED_EMAIL / ADMIN_SEED_PASSWORD
  *
  * Usage: npm run db:setup
@@ -15,10 +15,12 @@ import { PackageSchema } from '../packages/package.schema';
 import { AdminSchema, BuiltInAdminRole } from '../admins/admin.schema';
 import { CustomerSchema } from '../customers/customer.schema';
 import { LeadSchema } from '../leads/lead.schema';
+import { MenuSchema } from '../navigation/menu.schema';
+import { PackageQuizSchema } from '../package-quiz/package-quiz.schema';
 import { normalizePackageInput } from '../packages/package-fe.mapper';
 dotenv.config();
 
-const APP_COLLECTIONS = ['packages', 'admins', 'customers', 'leads'] as const;
+const APP_COLLECTIONS = ['packages', 'admins', 'customers', 'leads', 'menus', 'package_quizzes'] as const;
 
 function buildUriWithDb(baseUri: string, dbName: string): string {
   const qIndex = baseUri.indexOf('?');
@@ -60,6 +62,7 @@ function enrichSeedRow(row: Record<string, unknown>): Record<string, unknown> {
     ...row,
     tagline: row.tagline ?? row.shortDescription,
     heroImage: row.heroImage ?? row.imageUrl,
+    bannerImage: row.bannerImage ?? row.bannerImageUrl,
     accentImage: row.accentImage ?? row.accentImageUrl,
     promoBadge,
     specLine,
@@ -93,6 +96,8 @@ async function run() {
   const conn = await mongoose.createConnection(uri).asPromise();
   const Package = conn.model('Package', PackageSchema);
   const Admin = conn.model('Admin', AdminSchema);
+  const Menu = conn.model('Menu', MenuSchema);
+  const PackageQuiz = conn.model('PackageQuiz', PackageQuizSchema);
   conn.model('Customer', CustomerSchema);
   conn.model('Lead', LeadSchema);
 
@@ -101,7 +106,7 @@ async function run() {
     console.log(`  ${c}: ${await countDocs(conn, c)}`);
   }
 
-  console.log('\n--- Xóa dữ liệu app (4 collection) ---');
+  console.log('\n--- Xóa dữ liệu app ---');
   for (const c of APP_COLLECTIONS) {
     if (!conn.db) continue;
     const r = await conn.db.collection(c).deleteMany({});
@@ -134,6 +139,24 @@ async function run() {
   });
   console.log(`--- Admin: "${email}" / mật khẩu theo ADMIN_SEED_PASSWORD ---`);
 
+  const menusPath = path.join(process.cwd(), 'data', 'menus.seed.json');
+  if (fs.existsSync(menusPath)) {
+    const menuRows = JSON.parse(fs.readFileSync(menusPath, 'utf-8')) as Record<string, unknown>[];
+    await Menu.insertMany(menuRows);
+    console.log(`--- Menus: đã import ${menuRows.length} nhóm menu ---`);
+  } else {
+    console.log('--- Menus: bỏ qua (không có menus.seed.json) ---');
+  }
+
+  const quizPath = path.join(process.cwd(), 'data', 'package-quiz.seed.json');
+  if (fs.existsSync(quizPath)) {
+    const quizRows = JSON.parse(fs.readFileSync(quizPath, 'utf-8')) as Record<string, unknown>[];
+    await PackageQuiz.insertMany(quizRows);
+    console.log(`--- Package quiz: đã import ${quizRows.length} bộ câu hỏi ---`);
+  } else {
+    console.log('--- Package quiz: bỏ qua (không có package-quiz.seed.json) ---');
+  }
+
   console.log('\n--- Sau khi setup ---');
   for (const c of APP_COLLECTIONS) {
     console.log(`  ${c}: ${await countDocs(conn, c)}`);
@@ -141,7 +164,9 @@ async function run() {
 
   console.log('\nĐăng nhập admin: POST /api/v1/admin/auth/login');
   console.log(`  { "email": "${email}", "password": "<ADMIN_SEED_PASSWORD>" }`);
-  console.log('\nKhách: POST /api/v1/auth/register (SĐT + mật khẩu)\n');
+  console.log('\nMenu public: GET /api/v1/navigation');
+  console.log('Quiz public: GET /api/v1/package-quiz?code=home-needs');
+  console.log('Import riêng: npm run seed:navigation | npm run seed:package-quiz\n');
 
   await conn.close();
 }

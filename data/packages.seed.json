@@ -1,259 +1,686 @@
 [
   {
-    "type": "INTERNET",
-    "code": "internet-sky-f1",
-    "name": "Internet Sky F1",
-    "displayCode": "INTERNET SKY F1",
-    "tagline": "Wi-Fi 6 toàn nhà, tốc độ 1 Gbps — gói chủ lực cho gia đình hiện đại",
-    "promoBadge": "Giảm 50k khi thanh toán Online",
-    "price": 210000,
-    "priceNote": "/tháng",
     "billingCycle": "MONTHLY",
+    "priceNote": "/tháng",
     "specCaption": "Tốc độ (Download/ Upload)",
-    "statIcon": "gauge",
-    "features": [
-      "Trang bị Modem Wi-Fi băng tần kép & Access Point — phủ sóng rộng, ổn định khi nhiều thiết bị cùng kết nối",
-      "Tốc độ Download lên đến 1 Gbps — đáp ứng làm việc, học tập, giải trí 4K, livestream và game mượt",
-      "Phù hợp gia đình tới 15 thiết bị — Modem Wi-Fi 6 phân bổ băng thông thông minh",
-      "Lắp đặt nhanh & hỗ trợ kỹ thuật 24/7 — lắp trong 24–48h sau đăng ký",
-      "Ưu đãi giảm 50k khi thanh toán online — đến 31/05/2026"
-    ],
-    "heroImage": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-    "accentImage": "https://images.unsplash.com/photo-1544197150-b99a580bb7a0?w=600&q=80",
-    "metadata": {
-      "pricePrefix": "Chỉ từ",
-      "downloadMbps": 1000,
-      "uploadMbps": 300,
-      "maxDevices": 8,
-      "audience": "family",
-      "includedEquipment": [
-        { "label": "Modem Wi-Fi băng tần kép", "imageUrl": "https://images.unsplash.com/photo-1606904825271-94e838c646f0?w=400&q=80" },
-        { "label": "Bộ chuyển đổi ONT 1 port 1G", "imageUrl": "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&q=80" },
-        { "label": "Thiết bị Access Point", "imageUrl": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&q=80" }
-      ],
-      "privileges": [
-        { "icon": "wifi", "title": "Trang bị thiết bị hiện đại", "description": "Modem Wi-Fi mới nhất, phủ sóng rộng và kết nối ổn định." },
-        { "icon": "speed", "title": "Trải nghiệm tốc độ vượt trội", "description": "Học tập, làm việc, giải trí và livestream chất lượng cao." },
-        { "icon": "app", "title": "Quản lý với Hi FPT", "description": "Tích điểm, quản lý hợp đồng, gia hạn và hỗ trợ tức thì." },
-        { "icon": "support", "title": "Ưu đãi & chăm sóc tận tâm", "description": "Tặng 1 tháng khi đăng ký 12 tháng, hỗ trợ kỹ thuật 24/7." }
-      ],
-      "lifestyleImageUrl": "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&q=80",
-      "promo": { "text": "Giảm 50.000đ thanh toán online", "validUntil": "2026-05-31" }
-    },
     "isActive": true,
-    "sortOrder": 1
-  },
-  {
+    "bannerImage": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80&auto=format",
     "type": "INTERNET",
     "code": "internet-giga",
     "name": "Internet Giga",
     "displayCode": "INTERNET GIGA",
-    "tagline": "Phù hợp với cá nhân, gia đình nhỏ",
+    "tagline": "Phù hợp cá nhân, gia đình nhỏ — tốc độ ổn định",
     "promoBadge": "Giảm 50k khi thanh toán Online",
     "price": 195000,
-    "priceNote": "/tháng",
-    "billingCycle": "MONTHLY",
-    "specCaption": "Tốc độ (Download/ Upload)",
+    "sortOrder": 1,
     "statIcon": "gauge",
+    "heroImage": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format",
+    "accentImage": "https://images.unsplash.com/photo-1606904825271-94e838c646f0?w=600&q=80&auto=format",
     "features": [
-      "Modem Wi-Fi 6 băng tần kép",
-      "Kết nối lên đến 10 thiết bị",
-      "Phủ sóng ổn định cho nhà ít tầng",
-      "Miễn phí cài đặt tại nhà (khu vực áp dụng)",
-      "Tặng 1 tháng khi trả trước 12 tháng"
+      "Trang bị sẵn Modem Wi-Fi băng tần kép: hỗ trợ 2.4GHz và 5GHz, thiết bị tự chọn kênh tối ưu, hạn chế nhiễu sóng.",
+      "Hỗ trợ lên đến 10 thiết bị kết nối cùng lúc — phù hợp cá nhân hoặc hộ gia đình nhỏ.",
+      "Tốc độ Download/Upload 300 Mbps — học online, làm việc từ xa, xem video HD, giải trí trực tuyến.",
+      "Lắp đặt nhanh & hỗ trợ kỹ thuật 24/7 — triển khai trong 24–48h sau đăng ký.",
+      "Giảm 50k khi thanh toán Online — áp dụng gói Internet và Camera FPT đến 31/05/2026."
     ],
-    "heroImage": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
-    "accentImage": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=600&q=80",
     "metadata": {
       "pricePrefix": "Chỉ từ",
       "downloadMbps": 300,
       "uploadMbps": 300,
       "maxDevices": 10,
       "audience": "personal",
-      "includedEquipment": ["Modem Wi-Fi 6 băng tần kép"],
+      "heroHeadline": "INTERNET CHO CÁ NHÂN",
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "Modem Wi-Fi băng tần kép",
+          "imageUrl": "https://images.unsplash.com/photo-1606904825271-94e838c646f0?w=400&q=80&auto=format"
+        },
+        {
+          "label": "Bộ chuyển đổi ONT 1 port 1G",
+          "imageUrl": "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&q=80&auto=format"
+        }
+      ],
       "privileges": [
-        "Trang bị thiết bị hiện đại",
-        "Trải nghiệm tốc độ 300 Mbps đối xứng",
-        "Quản lý tiện ích qua Hi FPT"
-      ]
-    },
-    "isActive": true,
-    "sortOrder": 2
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
   },
   {
+    "billingCycle": "MONTHLY",
+    "priceNote": "/tháng",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80&auto=format",
+    "type": "INTERNET",
+    "code": "internet-sky-f1",
+    "name": "Internet Sky F1",
+    "displayCode": "INTERNET SKY F1",
+    "tagline": "Wi-Fi 6 toàn nhà 1 Gbps — gói chủ lực gia đình",
+    "promoBadge": "Giảm 50k khi thanh toán Online",
+    "price": 210000,
+    "sortOrder": 2,
+    "statIcon": "gauge",
+    "heroImage": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&auto=format",
+    "accentImage": "https://images.unsplash.com/photo-1544197150-b99a580bb7a0?w=600&q=80&auto=format",
+    "features": [
+      "Modem Wi-Fi 6 băng tần kép & Access Point — phủ sóng rộng, ổn định nhiều thiết bị.",
+      "Download lên đến 1 Gbps — 4K, livestream, game mượt cho cả nhà.",
+      "Phù hợp gia đình tới 15 thiết bị — phân bổ băng thông thông minh.",
+      "Lắp đặt 24–48h, hỗ trợ kỹ thuật 24/7.",
+      "Tặng ưu đãi khi trả trước 12 tháng (theo chương trình)."
+    ],
+    "metadata": {
+      "pricePrefix": "Chỉ từ",
+      "downloadMbps": 1000,
+      "uploadMbps": 300,
+      "maxDevices": 15,
+      "audience": "family",
+      "heroHeadline": "INTERNET GIA ĐÌNH",
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1609220136736-443aaeec488e?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "Modem Wi-Fi 6",
+          "imageUrl": "https://images.unsplash.com/photo-1606904825271-94e838c646f0?w=400&q=80&auto=format"
+        },
+        {
+          "label": "Access Point",
+          "imageUrl": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&q=80&auto=format"
+        },
+        {
+          "label": "ONT 1G",
+          "imageUrl": "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
+  },
+  {
+    "billingCycle": "MONTHLY",
+    "priceNote": "/tháng",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=80&auto=format",
     "type": "INTERNET",
     "code": "internet-giga-plus",
     "name": "Internet Giga Plus",
     "displayCode": "INTERNET GIGA PLUS",
-    "tagline": "2 Gbps — dành cho game thủ và streamer",
+    "tagline": "2 Gbps — dành game thủ và streamer",
     "promoBadge": "Giảm 100k khi thanh toán Online",
     "price": 399000,
-    "priceNote": "/tháng",
-    "billingCycle": "MONTHLY",
-    "specCaption": "Tốc độ (Download/ Upload)",
+    "sortOrder": 3,
     "statIcon": "gauge",
+    "heroImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80&auto=format",
+    "accentImage": "https://images.unsplash.com/photo-1614680376573-df3480a0a6a8?w=600&q=80&auto=format",
     "features": [
-      "Download 2 Gbps — game và 4K/8K cực nhanh",
-      "Ưu tiên QoS cho thiết bị game và PC",
-      "Modem + AP cao cấp, Wi-Fi 6E (theo khu vực)",
-      "Hỗ trợ kỹ thuật VIP 24/7"
+      "Download 2 Gbps — game, stream 4K/8K cực nhanh.",
+      "QoS ưu tiên PC/console — độ trễ thấp cho esports.",
+      "Modem + AP cao cấp Wi-Fi 6E (theo khu vực).",
+      "Hỗ trợ kỹ thuật VIP 24/7.",
+      "Giảm 100k thanh toán online đến 31/05/2026."
     ],
-    "heroImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80",
-    "accentImage": "https://images.unsplash.com/photo-1614680376573-df3480a0a6a8?w=600&q=80",
     "metadata": {
       "pricePrefix": "Chỉ từ",
       "downloadMbps": 2000,
       "uploadMbps": 1000,
       "maxDevices": 20,
       "audience": "gamer",
-      "includedEquipment": ["Modem Wi-Fi 6E", "Access Point cao cấp"],
-      "privileges": [
-        { "icon": "speed", "title": "2 Gbps download", "description": "Game và stream không giật lag." },
-        { "icon": "wifi", "title": "Wi-Fi 6E", "description": "Độ trễ thấp, ổn định cho esports." }
+      "heroHeadline": "INTERNET GAME THỦ",
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1614850523459-1c224fcee3e0?w=800&q=80&auto=format",
+      "promo": {
+        "text": "Giảm 100.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      },
+      "includedEquipment": [
+        {
+          "label": "Modem Wi-Fi 6E",
+          "imageUrl": "https://images.unsplash.com/photo-1614680376573-df3480a0a6a8?w=400&q=80&auto=format"
+        },
+        {
+          "label": "AP Gaming",
+          "imageUrl": "https://images.unsplash.com/photo-1593508512256-86ab42a8e620?w=400&q=80&auto=format"
+        }
       ],
-      "promo": { "text": "Giảm 100.000đ thanh toán online", "validUntil": "2026-05-31" }
-    },
-    "isActive": true,
-    "sortOrder": 3
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ]
+    }
   },
   {
-    "type": "INTERNET",
-    "code": "internet-meta",
-    "name": "Internet Meta",
-    "displayCode": "INTERNET META",
-    "tagline": "300 Mbps — tiết kiệm, đủ học tập và giải trí",
-    "promoBadge": "Lắp nhanh 24h",
-    "price": 165000,
-    "priceNote": "/tháng",
     "billingCycle": "MONTHLY",
+    "priceNote": "/tháng",
     "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1585771724684-38269a0e1b12?w=1200&q=80&auto=format",
+    "type": "INTERNET",
+    "code": "internet-combo-camera",
+    "name": "Combo Internet + Camera",
+    "displayCode": "COMBO NET + CAM",
+    "tagline": "Internet 300 Mbps + Camera Safe 2MP — an tâm toàn nhà",
+    "promoBadge": "Giảm 50k combo",
+    "price": 279000,
+    "sortOrder": 4,
     "statIcon": "gauge",
+    "heroImage": "https://images.unsplash.com/photo-1557324232-b8917ce3eb2c?w=800&q=80&auto=format",
+    "accentImage": "https://images.unsplash.com/photo-1606904825271-94e838c646f0?w=600&q=80&auto=format",
     "features": [
-      "Tốc độ 300 Mbps — đủ 5–8 thiết bị",
-      "Modem Wi-Fi 5/6 tùy khu vực",
-      "Lắp đặt miễn phí, hỗ trợ 24/7",
-      "Nâng cấp gói linh hoạt"
+      "Internet 300/300 Mbps + 1 camera Safe 2MP.",
+      "Xem camera trên Hi FPT cùng hóa đơn Internet.",
+      "Lắp đặt trọn gói một lần.",
+      "Cloud camera 3 tháng đầu.",
+      "Giảm 50k thanh toán online."
     ],
-    "heroImage": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
-    "accentImage": "https://images.unsplash.com/photo-1606904825271-94e838c646f0?w=600&q=80",
     "metadata": {
       "pricePrefix": "Chỉ từ",
       "downloadMbps": 300,
-      "uploadMbps": 150,
-      "maxDevices": 8,
-      "audience": "personal",
-      "includedEquipment": ["Modem Wi-Fi"],
-      "privileges": ["Giá tốt cho sinh viên và hộ nhỏ", "Hỗ trợ 24/7"]
-    },
-    "isActive": true,
-    "sortOrder": 4
+      "uploadMbps": 300,
+      "maxDevices": 10,
+      "audience": "combo-camera",
+      "heroHeadline": "COMBO CAMERA",
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1585771724684-38269a0e1b12?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "Modem Wi-Fi 6",
+          "imageUrl": "https://images.unsplash.com/photo-1606904825271-94e838c646f0?w=400&q=80&auto=format"
+        },
+        {
+          "label": "Camera Safe 2MP",
+          "imageUrl": "https://images.unsplash.com/photo-1557324232-b8917ce3eb2c?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
   },
   {
+    "billingCycle": "MONTHLY",
+    "priceNote": "/tháng",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1574375927938-d5a98e8d699e?w=1200&q=80&auto=format",
+    "type": "INTERNET",
+    "code": "internet-combo-tv",
+    "name": "Combo Internet + Truyền hình",
+    "displayCode": "COMBO INTERNET TV",
+    "tagline": "Internet 300 Mbps + FPT Play Max — tiết kiệm combo",
+    "promoBadge": "Combo giảm thêm 15%",
+    "price": 329000,
+    "sortOrder": 5,
+    "statIcon": "gauge",
+    "heroImage": "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800&q=80&auto=format",
+    "accentImage": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&q=80&auto=format",
+    "features": [
+      "Internet 300/300 Mbps + gói FPT Play Max trong một hóa đơn.",
+      "Xem thể thao, phim HBO, kênh gia đình trên TV Box 4K.",
+      "Modem Wi-Fi 6 và FPT Play Box (theo chương trình).",
+      "Lắp đặt trọn gói, một điểm hỗ trợ 24/7.",
+      "Giảm thêm khi thanh toán online."
+    ],
+    "metadata": {
+      "pricePrefix": "Chỉ từ",
+      "downloadMbps": 300,
+      "uploadMbps": 300,
+      "maxDevices": 12,
+      "audience": "combo-tv",
+      "heroHeadline": "COMBO TRUYỀN HÌNH",
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "Modem Wi-Fi 6",
+          "imageUrl": "https://images.unsplash.com/photo-1606904825271-94e838c646f0?w=400&q=80&auto=format"
+        },
+        {
+          "label": "FPT Play Box 4K",
+          "imageUrl": "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
+  },
+  {
+    "billingCycle": "MONTHLY",
+    "priceNote": "/tháng",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80&auto=format",
     "type": "SPEEDX",
     "code": "speedx-mesh-pro",
     "name": "SpeedX Mesh Pro",
-    "shortName": "SpeedX Mesh Pro",
+    "shortName": "Mesh Pro",
     "displayCode": "SPEEDX MESH PRO",
-    "tagline": "Mesh phủ sóng nhiều tầng",
+    "tagline": "Mesh phủ sóng nhiều tầng — biệt thự, nhà phố",
     "price": 89000,
-    "priceNote": "/tháng",
-    "billingCycle": "MONTHLY",
-    "specLine": "Liên hệ tư vấn",
+    "sortOrder": 1,
     "statIcon": "gauge",
+    "specLine": "Liên hệ tư vấn",
+    "heroImage": "https://images.unsplash.com/photo-1606904825271-94e838c646f0?w=800&q=80&auto=format",
+    "accentImage": "https://images.unsplash.com/photo-1544197150-b99a580bb7a0?w=600&q=80&auto=format",
     "features": [
-      "2–3 node mesh tùy diện tích nhà",
-      "Roaming liền mạch giữa các tầng",
-      "Quản lý qua app Hi FPT",
-      "Tương thích mọi gói Internet FPT"
+      "2–3 node mesh tùy diện tích — roaming liền mạch giữa các tầng.",
+      "Quản lý qua app Hi FPT, báo cáo sóng realtime.",
+      "Tương thích mọi gói Internet FPT.",
+      "Tư vấn khảo sát sóng miễn phí.",
+      "Bảo hành chính hãng 12 tháng."
     ],
-    "heroImage": "https://images.unsplash.com/photo-1606904825271-94e838c646f0?w=800&q=80",
-    "accentImage": "https://images.unsplash.com/photo-1544197150-b99a580bb7a0?w=600&q=80",
     "metadata": {
-      "maxDevices": 10,
+      "pricePrefix": "Chỉ từ",
+      "maxDevices": 15,
       "audience": "family",
-      "includedEquipment": ["Bộ mesh Wi-Fi 7"],
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1558002038-1055907df827?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "Bộ mesh Wi-Fi 7 (2 node)",
+          "imageUrl": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&q=80&auto=format"
+        },
+        {
+          "label": "Cáp mạng cao cấp",
+          "imageUrl": "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&q=80&auto=format"
+        }
+      ],
       "privileges": [
-        "Mesh toàn nhà — biệt thự, nhà phố nhiều tầng",
-        "Roaming liền mạch",
-        "Tư vấn thiết kế sóng miễn phí"
-      ]
-    },
-    "isActive": true,
-    "sortOrder": 1
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
   },
   {
+    "billingCycle": "MONTHLY",
+    "priceNote": "/tháng",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=80&auto=format",
     "type": "SPEEDX",
     "code": "speedx-gaming",
     "name": "SpeedX Gaming",
-    "shortName": "SpeedX Gaming",
+    "shortName": "Gaming",
     "displayCode": "SPEEDX GAMING",
-    "tagline": "Ưu tiên băng thông game — độ trễ thấp",
+    "tagline": "QoS game — độ trễ thấp, ưu tiên băng thông",
     "promoBadge": "For gamers",
     "price": 69000,
-    "priceNote": "/tháng",
-    "billingCycle": "MONTHLY",
-    "specLine": "QoS game ưu tiên",
+    "sortOrder": 2,
     "statIcon": "gauge",
+    "specLine": "QoS game ưu tiên",
+    "heroImage": "https://images.unsplash.com/photo-1614680376573-df3480a0a6a8?w=800&q=80&auto=format",
     "features": [
-      "QoS ưu tiên PC/console game",
-      "Cổng LAN Gigabit trên node",
-      "Báo cáo ping realtime trên app"
+      "QoS ưu tiên PC/console — ping ổn định.",
+      "Cổng LAN Gigabit trên node.",
+      "Báo cáo ping realtime trên Hi FPT.",
+      "Tối ưu cho esports và stream.",
+      "Cài đặt trong ngày (khu vực áp dụng)."
     ],
-    "heroImage": "https://images.unsplash.com/photo-1614680376573-df3480a0a6a8?w=800&q=80",
     "metadata": {
+      "pricePrefix": "Chỉ từ",
       "maxDevices": 12,
       "audience": "gamer",
-      "includedEquipment": ["Node Gaming Wi-Fi 6"],
-      "privileges": ["Độ trễ thấp cho esports", "Ưu tiên lưu lượng game"]
-    },
-    "isActive": true,
-    "sortOrder": 2
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1614850523459-1c224fcee3e0?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "Node Gaming Wi-Fi 6",
+          "imageUrl": "https://images.unsplash.com/photo-1614680376573-df3480a0a6a8?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
   },
   {
+    "billingCycle": "MONTHLY",
+    "priceNote": "/tháng",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1496307048414-f4f0ae6383a1?w=1200&q=80&auto=format",
     "type": "SPEEDX",
     "code": "speedx-lite",
     "name": "SpeedX Lite",
     "displayCode": "SPEEDX LITE",
     "tagline": "Mở rộng Wi-Fi căn hộ nhỏ — giá nhẹ",
     "price": 49000,
-    "priceNote": "/tháng",
-    "billingCycle": "MONTHLY",
-    "specLine": "1 node — phù hợp < 80m²",
+    "sortOrder": 3,
     "statIcon": "gauge",
-    "features": ["1 node AP", "Cài đặt trong ngày", "Quản lý qua Hi FPT"],
-    "heroImage": "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&q=80",
+    "specLine": "1 node — < 80m²",
+    "heroImage": "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&q=80&auto=format",
+    "features": [
+      "1 node Access Point — phù hợp studio, căn 1–2 phòng.",
+      "Cài đặt trong ngày.",
+      "Quản lý qua Hi FPT.",
+      "Nâng cấp thêm node khi cần.",
+      "Tiết kiệm cho người thuê nhà."
+    ],
     "metadata": {
+      "pricePrefix": "Chỉ từ",
       "maxDevices": 6,
       "audience": "personal",
-      "includedEquipment": ["1 Access Point"],
-      "privileges": ["Tiết kiệm cho studio, căn hộ 1–2 phòng"]
-    },
-    "isActive": true,
-    "sortOrder": 3
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "1 Access Point",
+          "imageUrl": "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
   },
   {
+    "billingCycle": "MONTHLY",
+    "priceNote": "/tháng",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80&auto=format",
+    "type": "SPEEDX",
+    "code": "speedx-triple",
+    "name": "SpeedX Triple Pack",
+    "displayCode": "SPEEDX TRIPLE",
+    "tagline": "3 node mesh — nhà 3–4 tầng",
+    "price": 129000,
+    "sortOrder": 4,
+    "statIcon": "gauge",
+    "specLine": "3 node mesh",
+    "heroImage": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=800&q=80&auto=format",
+    "features": [
+      "Bộ 3 node — phủ sóng đồng đều nhiều tầng.",
+      "Roaming không mất kết nối khi di chuyển.",
+      "Hỗ trợ Wi-Fi 6.",
+      "Khảo sát và tối ưu vị trí node miễn phí.",
+      "Ưu đãi khi mua kèm Internet Sky."
+    ],
+    "metadata": {
+      "pricePrefix": "Chỉ từ",
+      "maxDevices": 20,
+      "audience": "family",
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "Mesh node ×3",
+          "imageUrl": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&q=80&auto=format"
+        },
+        {
+          "label": "Giá treo tường",
+          "imageUrl": "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
+  },
+  {
+    "billingCycle": "MONTHLY",
+    "priceNote": "Liên hệ",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=80&auto=format",
     "type": "SPEEDX",
     "code": "speedx-enterprise",
     "name": "SpeedX Enterprise",
     "displayCode": "SPEEDX ENTERPRISE",
     "tagline": "Mesh + VLAN cho văn phòng / SOHO",
     "price": null,
-    "priceNote": "Liên hệ",
-    "billingCycle": "MONTHLY",
-    "specLine": "Liên hệ tư vấn",
+    "sortOrder": 5,
     "statIcon": "gauge",
-    "features": ["Thiết kế theo mặt bằng", "Hỗ trợ onsite", "SLA 99.5%"],
-    "heroImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+    "specLine": "Liên hệ tư vấn",
+    "heroImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&auto=format",
+    "features": [
+      "Thiết kế theo mặt bằng văn phòng.",
+      "VLAN, guest Wi-Fi, SLA 99.5%.",
+      "Hỗ trợ onsite và remote.",
+      "Báo cáo chất lượng mạng định kỳ.",
+      "Hợp đồng doanh nghiệp linh hoạt."
+    ],
     "metadata": {
+      "pricePrefix": "Chỉ từ",
       "contactOnly": true,
       "maxDevices": 50,
-      "includedEquipment": ["Giải pháp mesh doanh nghiệp"],
-      "privileges": ["Tư vấn chuyên sâu", "Hợp đồng doanh nghiệp"]
-    },
-    "isActive": true,
-    "sortOrder": 4
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "Giải pháp mesh DN",
+          "imageUrl": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
   },
   {
+    "billingCycle": "MONTHLY",
+    "priceNote": "/tháng",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1574375927938-d5a98e8d699e?w=1200&q=80&auto=format",
     "type": "FPT_PLAY",
     "code": "fpt-play-kplus",
     "name": "FPT Play K+",
@@ -261,64 +688,185 @@
     "tagline": "Thể thao bản quyền — Ngoại hạng Anh, C1",
     "promoBadge": "Combo Internet giảm thêm",
     "price": 88000,
-    "priceNote": "/tháng",
-    "billingCycle": "MONTHLY",
+    "sortOrder": 1,
     "statIcon": "tv",
+    "heroImage": "https://images.unsplash.com/photo-1574375927938-d5a98e8d699e?w=800&q=80&auto=format",
+    "accentImage": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&q=80&auto=format",
     "features": [
-      "Kênh K+ thể thao HD/4K",
-      "Xem TV Box, app đa nền tảng",
-      "Tích hợp gói Internet — giảm combo"
+      "Kênh K+ thể thao HD/4K.",
+      "Xem TV Box, app đa nền tảng.",
+      "Tích hợp combo Internet — giảm thêm.",
+      "Trực tiếp các giải bóng đá hàng đầu.",
+      "Hỗ trợ cài đặt tại nhà."
     ],
-    "heroImage": "https://images.unsplash.com/photo-1574375927938-d5a98e8d699e?w=800&q=80",
     "metadata": {
+      "pricePrefix": "Chỉ từ",
       "audience": "combo-tv",
-      "includedEquipment": ["FPT Play Box (thuê/mua theo CT)"],
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "FPT Play Box",
+          "imageUrl": "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=400&q=80&auto=format"
+        },
+        {
+          "label": "Remote điều khiển",
+          "imageUrl": "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=400&q=80&auto=format"
+        }
+      ],
       "privileges": [
-        { "icon": "tv", "title": "Thể thao đỉnh cao", "description": "Trực tiếp các giải bóng đá hàng đầu châu Âu." }
-      ]
-    },
-    "isActive": true,
-    "sortOrder": 1
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
   },
   {
+    "billingCycle": "MONTHLY",
+    "priceNote": "/tháng",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&q=80&auto=format",
     "type": "FPT_PLAY",
     "code": "fpt-play-hbo",
     "name": "FPT Play HBO GO",
     "displayCode": "HBO GO",
     "tagline": "Phim bom tấn HBO — series độc quyền",
     "price": 99000,
-    "priceNote": "/tháng",
-    "billingCycle": "MONTHLY",
+    "sortOrder": 2,
     "statIcon": "tv",
-    "features": ["Thư viện HBO", "Phụ đề Việt", "Xem không giới hạn"],
-    "heroImage": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&q=80",
+    "heroImage": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&q=80&auto=format",
+    "features": [
+      "Thư viện HBO đầy đủ.",
+      "Phụ đề tiếng Việt.",
+      "Xem không giới hạn trên nhiều thiết bị.",
+      "Tải xem offline (app).",
+      "Cập nhật phim mới hàng tuần."
+    ],
     "metadata": {
+      "pricePrefix": "Chỉ từ",
       "audience": "personal",
-      "privileges": ["Phim độc quyền HBO", "Xem đa thiết bị"]
-    },
-    "isActive": true,
-    "sortOrder": 2
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1440407686330-0c4d9a3d0f0c?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "Quyền xem HBO GO",
+          "imageUrl": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
   },
   {
+    "billingCycle": "MONTHLY",
+    "priceNote": "/tháng",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=1200&q=80&auto=format",
     "type": "FPT_PLAY",
     "code": "fpt-play-family",
     "name": "FPT Play Family",
     "displayCode": "FPT PLAY FAMILY",
     "tagline": "Kênh trẻ em & gia đình — an toàn nội dung",
     "price": 55000,
-    "priceNote": "/tháng",
-    "billingCycle": "MONTHLY",
+    "sortOrder": 3,
     "statIcon": "tv",
-    "features": ["Kênh thiếu nhi", "Kiểm soát phụ huynh", "HD miễn phí"],
-    "heroImage": "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=800&q=80",
+    "heroImage": "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=800&q=80&auto=format",
+    "features": [
+      "Kênh thiếu nhi, giáo dục.",
+      "Kiểm soát phụ huynh.",
+      "HD miễn phí.",
+      "Gói tiết kiệm cho gia đình.",
+      "Xem trên TV và mobile."
+    ],
     "metadata": {
+      "pricePrefix": "Chỉ từ",
       "audience": "family",
-      "privileges": ["Nội dung an toàn cho trẻ", "Gói tiết kiệm cho gia đình"]
-    },
-    "isActive": true,
-    "sortOrder": 3
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "Gói kênh Family",
+          "imageUrl": "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
   },
   {
+    "billingCycle": "MONTHLY",
+    "priceNote": "/tháng",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=1200&q=80&auto=format",
     "type": "FPT_PLAY",
     "code": "fpt-play-max",
     "name": "FPT Play Max",
@@ -326,20 +874,120 @@
     "tagline": "All-in: thể thao + phim + show",
     "promoBadge": "Best value",
     "price": 159000,
-    "priceNote": "/tháng",
-    "billingCycle": "MONTHLY",
+    "sortOrder": 4,
     "statIcon": "tv",
-    "features": ["Gộp K+ & HBO", "Ưu đãi mua kèm Internet", "4K trên TV hỗ trợ"],
-    "heroImage": "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800&q=80",
+    "heroImage": "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800&q=80&auto=format",
+    "features": [
+      "Gộp K+ & HBO trong một gói.",
+      "Ưu đãi mua kèm Internet.",
+      "4K trên TV hỗ trợ.",
+      "Kho nội dung khổng lồ.",
+      "Tiết kiệm so với mua lẻ."
+    ],
     "metadata": {
+      "pricePrefix": "Chỉ từ",
       "audience": "combo-tv",
-      "includedEquipment": ["FPT Play Box 4K"],
-      "privileges": ["Trọn bộ giải trí trong một gói", "Tiết kiệm so với mua lẻ"]
-    },
-    "isActive": true,
-    "sortOrder": 4
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1574375927938-d5a98e8d699e?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "FPT Play Box 4K",
+          "imageUrl": "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
   },
   {
+    "billingCycle": "MONTHLY",
+    "priceNote": "/tháng",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1574375927938-d5a98e8d699e?w=1200&q=80&auto=format",
+    "type": "FPT_PLAY",
+    "code": "fpt-play-basic",
+    "name": "FPT Play Basic",
+    "displayCode": "FPT PLAY BASIC",
+    "tagline": "Kênh miễn phí + thu phí cơ bản — giá nhẹ",
+    "price": 39000,
+    "sortOrder": 5,
+    "statIcon": "tv",
+    "heroImage": "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=800&q=80&auto=format",
+    "features": [
+      "Hơn 80 kênh truyền hình.",
+      "App FPT Play trên điện thoại.",
+      "Nâng cấp lên K+ hoặc Max bất cứ lúc nào.",
+      "Không cam kết thời hạn dài.",
+      "Hỗ trợ 24/7."
+    ],
+    "metadata": {
+      "pricePrefix": "Chỉ từ",
+      "audience": "personal",
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "App FPT Play",
+          "imageUrl": "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
+  },
+  {
+    "billingCycle": "ONCE",
+    "priceNote": "/bộ",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1557324232-b8917ce3eb2c?w=1200&q=80&auto=format",
     "type": "CAMERA",
     "code": "camera-safe-2mp",
     "name": "FPT Camera Safe 2MP",
@@ -347,161 +995,611 @@
     "tagline": "Camera trong nhà 2MP — xem đêm, cảnh báo",
     "promoBadge": "Giảm 50k combo Internet",
     "price": 99000,
-    "priceNote": "/bộ",
-    "billingCycle": "ONCE",
+    "sortOrder": 1,
     "statIcon": "camera",
+    "heroImage": "https://images.unsplash.com/photo-1557324232-b8917ce3eb2c?w=800&q=80&auto=format",
+    "accentImage": "https://images.unsplash.com/photo-1567443024551-f3e3cc2be870?w=600&q=80&auto=format",
     "features": [
-      "2MP Full HD",
-      "Hồng ngoại ban đêm",
-      "Cloud 7 ngày (3 tháng đầu)"
+      "2MP Full HD, góc nhìn rộng.",
+      "Hồng ngoại ban đêm.",
+      "Cloud 7 ngày — 3 tháng đầu miễn phí.",
+      "Cảnh báo chuyển động trên Hi FPT.",
+      "Lắp đặt tại nhà."
     ],
-    "heroImage": "https://images.unsplash.com/photo-1557324232-b8917ce3eb2c?w=800&q=80",
-    "accentImage": "https://images.unsplash.com/photo-1557324232-b8917ce3eb2c?w=400&q=80",
     "metadata": {
+      "pricePrefix": "Chỉ từ",
       "audience": "combo-camera",
       "resolution": "2MP",
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1585771724684-38269a0e1b12?w=800&q=80&auto=format",
       "includedEquipment": [
-        { "label": "Camera Safe 2MP", "imageUrl": "https://images.unsplash.com/photo-1557324232-b8917ce3eb2c?w=400&q=80" }
+        {
+          "label": "Camera Safe 2MP",
+          "imageUrl": "https://images.unsplash.com/photo-1557324232-b8917ce3eb2c?w=400&q=80&auto=format"
+        },
+        {
+          "label": "Nguồn & giá treo",
+          "imageUrl": "https://images.unsplash.com/photo-1567443024551-f3e3cc2be870?w=400&q=80&auto=format"
+        }
       ],
-      "privileges": ["Lắp đặt tại nhà", "Xem trên Hi FPT"]
-    },
-    "isActive": true,
-    "sortOrder": 1
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
   },
   {
+    "billingCycle": "ONCE",
+    "priceNote": "/bộ",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1567443024551-f3e3cc2be870?w=1200&q=80&auto=format",
     "type": "CAMERA",
     "code": "camera-ai-4mp",
     "name": "FPT Camera AI 4MP",
     "displayCode": "CAMERA AI 4MP",
     "tagline": "AI nhận diện người — thông báo thông minh",
     "price": 149000,
-    "priceNote": "/bộ",
-    "billingCycle": "ONCE",
+    "sortOrder": 2,
     "statIcon": "camera",
-    "features": ["4MP sắc nét", "AI phân biệt người/vật", "Tích hợp Hi FPT"],
-    "heroImage": "https://images.unsplash.com/photo-1567443024551-f3e3cc2be870?w=800&q=80",
+    "heroImage": "https://images.unsplash.com/photo-1567443024551-f3e3cc2be870?w=800&q=80&auto=format",
+    "features": [
+      "4MP sắc nét, zoom số.",
+      "AI phân biệt người/vật — giảm báo nhầm.",
+      "Tích hợp Hi FPT.",
+      "Cloud 14 ngày (CTKM).",
+      "Âm thanh hai chiều."
+    ],
     "metadata": {
+      "pricePrefix": "Chỉ từ",
       "audience": "combo-camera",
       "resolution": "4MP",
-      "includedEquipment": ["Camera AI 4MP"],
-      "privileges": ["Cảnh báo chính xác", "Giảm báo động nhầm"]
-    },
-    "isActive": true,
-    "sortOrder": 2
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1557324232-b8917ce3eb2c?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "Camera AI 4MP",
+          "imageUrl": "https://images.unsplash.com/photo-1567443024551-f3e3cc2be870?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
   },
   {
+    "billingCycle": "ONCE",
+    "priceNote": "/bộ",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1585771724684-38269a0e1b12?w=1200&q=80&auto=format",
+    "type": "CAMERA",
+    "code": "camera-outdoor-5mp",
+    "name": "FPT Camera Outdoor 5MP",
+    "displayCode": "CAMERA OUTDOOR 5MP",
+    "tagline": "Camera ngoài trời chống nước IP66",
+    "price": 189000,
+    "sortOrder": 3,
+    "statIcon": "camera",
+    "heroImage": "https://images.unsplash.com/photo-1585771724684-38269a0e1b12?w=800&q=80&auto=format",
+    "features": [
+      "5MP, chống nước IP66.",
+      "Tầm nhìn đêm 30m.",
+      "Gắn tường/trần ngoài trời.",
+      "Cảnh báo xâm nhập.",
+      "Lưu cloud hoặc thẻ nhớ."
+    ],
+    "metadata": {
+      "pricePrefix": "Chỉ từ",
+      "audience": "combo-camera",
+      "resolution": "5MP",
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "Camera Outdoor 5MP",
+          "imageUrl": "https://images.unsplash.com/photo-1585771724684-38269a0e1b12?w=400&q=80&auto=format"
+        },
+        {
+          "label": "Bộ phụ kiện lắp ngoài trời",
+          "imageUrl": "https://images.unsplash.com/photo-1557324232-b8917ce3eb2c?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
+  },
+  {
+    "billingCycle": "MONTHLY",
+    "priceNote": "/tháng",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80&auto=format",
     "type": "CAMERA",
     "code": "camera-cloud-30",
     "name": "FPT Camera Cloud 30 ngày",
     "displayCode": "CLOUD 30D",
     "tagline": "Lưu trữ đám mây 30 ngày",
     "price": 49000,
-    "priceNote": "/tháng",
-    "billingCycle": "MONTHLY",
+    "sortOrder": 4,
     "statIcon": "camera",
-    "features": ["Lưu 30 ngày", "Tải clip", "Chia sẻ gia đình"],
-    "heroImage": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80",
+    "heroImage": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80&auto=format",
+    "features": [
+      "Lưu clip 30 ngày trên cloud.",
+      "Tải và chia sẻ gia đình.",
+      "Truy cập mọi nơi.",
+      "Mã hóa dữ liệu.",
+      "Áp dụng mọi camera FPT."
+    ],
     "metadata": {
-      "includedEquipment": ["Gói cloud 30 ngày"],
-      "privileges": ["Không lo mất dữ liệu", "Truy cập mọi nơi"]
-    },
-    "isActive": true,
-    "sortOrder": 3
+      "pricePrefix": "Chỉ từ",
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1563986768494-4dff2768ff6d?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "Gói cloud 30 ngày",
+          "imageUrl": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
   },
   {
+    "billingCycle": "ONCE",
+    "priceNote": "Liên hệ",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1557324232-b8917ce3eb2c?w=1200&q=80&auto=format",
     "type": "CAMERA",
     "code": "camera-kit-4",
     "name": "FPT Camera Kit 4 cam",
     "displayCode": "KIT 4 CAM",
     "tagline": "Combo 4 camera — an ninh toàn diện",
     "price": null,
-    "priceNote": "Liên hệ",
-    "billingCycle": "ONCE",
     "specLine": "Liên hệ tư vấn",
+    "sortOrder": 5,
     "statIcon": "camera",
-    "features": ["4 camera indoor/outdoor", "Đầu ghi hoặc cloud", "Lắp trọn gói"],
-    "heroImage": "https://images.unsplash.com/photo-1585771724684-38269a0e1b12?w=800&q=80",
+    "heroImage": "https://images.unsplash.com/photo-1585771724684-38269a0e1b12?w=800&q=80&auto=format",
+    "features": [
+      "4 camera indoor/outdoor tùy chọn.",
+      "Đầu ghi hoặc cloud tập trung.",
+      "Lắp trọn gói, bảo hành 24 tháng.",
+      "Khảo sát miễn phí.",
+      "Giảm khi combo Internet."
+    ],
     "metadata": {
+      "pricePrefix": "Chỉ từ",
       "contactOnly": true,
       "cameraCount": 4,
-      "includedEquipment": ["4 camera + phụ kiện lắp đặt"],
-      "privileges": ["Khảo sát miễn phí", "Bảo hành chính hãng"]
-    },
-    "isActive": true,
-    "sortOrder": 4
+      "audience": "combo-camera",
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1585771724684-38269a0e1b12?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "4 camera + phụ kiện",
+          "imageUrl": "https://images.unsplash.com/photo-1557324232-b8917ce3eb2c?w=400&q=80&auto=format"
+        },
+        {
+          "label": "Đầu ghi / NVR",
+          "imageUrl": "https://images.unsplash.com/photo-1567443024551-f3e3cc2be870?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
   },
   {
+    "billingCycle": "MONTHLY",
+    "priceNote": "/tháng",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1563986768494-4dff2768ff6d?w=1200&q=80&auto=format",
     "type": "SERVICE",
     "code": "service-f-safe",
     "name": "F-Safe",
     "displayCode": "F-SAFE",
     "tagline": "Bảo mật mạng — lọc web độc hại",
     "price": 29000,
-    "priceNote": "/tháng",
-    "billingCycle": "MONTHLY",
+    "sortOrder": 1,
     "statIcon": "sparkles",
-    "features": ["Chặn malware/phishing", "Kiểm soát trẻ em", "Báo cáo tuần"],
-    "heroImage": "https://images.unsplash.com/photo-1563986768494-4dff2768ff6d?w=800&q=80",
+    "heroImage": "https://images.unsplash.com/photo-1563986768494-4dff2768ff6d?w=800&q=80&auto=format",
+    "features": [
+      "Chặn malware, phishing.",
+      "Kiểm soát trẻ em — lọc nội dung.",
+      "Báo cáo tuần qua email.",
+      "Cài đặt từ xa qua Hi FPT.",
+      "Bảo vệ mọi thiết bị trong nhà."
+    ],
     "metadata": {
-      "privileges": ["An toàn cho cả gia đình", "Cài đặt từ xa"]
-    },
-    "isActive": true,
-    "sortOrder": 1
+      "pricePrefix": "Chỉ từ",
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "License F-Safe",
+          "imageUrl": "https://images.unsplash.com/photo-1563986768494-4dff2768ff6d?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
   },
   {
+    "billingCycle": "MONTHLY",
+    "priceNote": "/tháng",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1558002038-1055907df827?w=1200&q=80&auto=format",
     "type": "SERVICE",
     "code": "service-smarthome",
     "name": "Smarthome Basic",
     "displayCode": "SMARTHOME",
     "tagline": "Điều khiển nhà thông minh qua Hi FPT",
     "price": 39000,
-    "priceNote": "/tháng",
-    "billingCycle": "MONTHLY",
+    "sortOrder": 2,
     "statIcon": "sparkles",
-    "features": ["Kịch bản tự động", "Tích hợp đèn/công tắc", "Điều khiển giọng nói"],
-    "heroImage": "https://images.unsplash.com/photo-1558002038-1055907df827?w=800&q=80",
+    "heroImage": "https://images.unsplash.com/photo-1558002038-1055907df827?w=800&q=80&auto=format",
+    "features": [
+      "Kịch bản tự động sáng/điều hòa.",
+      "Tích hợp đèn, công tắc thông minh.",
+      "Điều khiển giọng nói.",
+      "Hỗ trợ cài đặt tại nhà.",
+      "Mở rộng thiết bị dần."
+    ],
     "metadata": {
-      "privileges": ["Kết nối thiết bị đa hãng", "Hỗ trợ cài đặt"]
-    },
-    "isActive": true,
-    "sortOrder": 2
+      "pricePrefix": "Chỉ từ",
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1558002038-1055907df827?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "Hub Smarthome",
+          "imageUrl": "https://images.unsplash.com/photo-1558002038-1055907df827?w=400&q=80&auto=format"
+        },
+        {
+          "label": "Công tắc thông minh",
+          "imageUrl": "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
   },
   {
+    "billingCycle": "MONTHLY",
+    "priceNote": "/tháng",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80&auto=format",
     "type": "SERVICE",
     "code": "service-static-ip",
     "name": "IP Tĩnh Doanh nghiệp",
     "displayCode": "STATIC IP",
     "tagline": "IP cố định — server, camera, VPN",
     "price": 200000,
-    "priceNote": "/tháng",
-    "billingCycle": "MONTHLY",
+    "sortOrder": 3,
     "statIcon": "sparkles",
-    "features": ["1 IP tĩnh", "Hỗ trợ cấu hình", "Cam kết uptime"],
-    "heroImage": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
+    "heroImage": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80&auto=format",
+    "features": [
+      "1 IP tĩnh IPv4.",
+      "Hỗ trợ cấu hình port forwarding.",
+      "Phù hợp server nội bộ, camera.",
+      "Cam kết uptime.",
+      "Tư vấn kỹ thuật doanh nghiệp."
+    ],
     "metadata": {
-      "privileges": ["Phù hợp doanh nghiệp nhỏ", "Tư vấn kỹ thuật"]
-    },
-    "isActive": true,
-    "sortOrder": 3
+      "pricePrefix": "Chỉ từ",
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "Gói IP tĩnh",
+          "imageUrl": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
   },
   {
+    "billingCycle": "MONTHLY",
+    "priceNote": "Liên hệ",
+    "specCaption": "Tốc độ (Download/ Upload)",
+    "isActive": true,
+    "bannerImage": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&q=80&auto=format",
     "type": "SERVICE",
     "code": "service-care-247",
     "name": "Care 24/7 Premium",
     "displayCode": "CARE 24/7",
     "tagline": "Hỗ trợ ưu tiên — kỹ thuật tới nhà trong 4h",
     "price": null,
-    "priceNote": "Liên hệ",
-    "billingCycle": "MONTHLY",
     "specLine": "Liên hệ tư vấn",
+    "sortOrder": 4,
     "statIcon": "sparkles",
-    "features": ["Hotline ưu tiên", "Bảo trì định kỳ", "Thay thiết bị nhanh"],
-    "heroImage": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80",
+    "heroImage": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80&auto=format",
+    "features": [
+      "Hotline ưu tiên.",
+      "Bảo trì định kỳ.",
+      "Thay thiết bị nhanh.",
+      "Dành khách VIP / doanh nghiệp.",
+      "Cam kết phản hồi 15 phút."
+    ],
     "metadata": {
+      "pricePrefix": "Chỉ từ",
       "contactOnly": true,
-      "privileges": ["Dành cho khách VIP", "Cam kết thời gian phản hồi"]
-    },
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "Gói Care Premium",
+          "imageUrl": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
+  },
+  {
+    "billingCycle": "MONTHLY",
+    "priceNote": "/tháng",
+    "specCaption": "Tốc độ (Download/ Upload)",
     "isActive": true,
-    "sortOrder": 4
+    "bannerImage": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200&q=80&auto=format",
+    "type": "SERVICE",
+    "code": "service-dns-protect",
+    "name": "DNS Protect Pro",
+    "displayCode": "DNS PROTECT",
+    "tagline": "Lọc DNS toàn mạng — chặn quảng cáo & độc hại",
+    "price": 19000,
+    "sortOrder": 5,
+    "statIcon": "sparkles",
+    "heroImage": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80&auto=format",
+    "features": [
+      "Lọc DNS cấp router.",
+      "Chặn quảng cáo, tracker.",
+      "Danh sách trắng cho trẻ em.",
+      "Không cần cài app từng máy.",
+      "Bật/tắt trên Hi FPT."
+    ],
+    "metadata": {
+      "pricePrefix": "Chỉ từ",
+      "lifestyleImageUrl": "https://images.unsplash.com/photo-1563986768494-4dff2768ff6d?w=800&q=80&auto=format",
+      "includedEquipment": [
+        {
+          "label": "DNS Protect license",
+          "imageUrl": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&q=80&auto=format"
+        }
+      ],
+      "privileges": [
+        {
+          "icon": "wifi",
+          "title": "Trang bị thiết bị hiện đại",
+          "description": "Trang bị miễn phí modem Wi-Fi công nghệ mới nhất, phủ sóng rộng và kết nối ổn định."
+        },
+        {
+          "icon": "speed",
+          "title": "Trải nghiệm tốc độ vượt trội",
+          "description": "Đáp ứng học tập, làm việc, giải trí và livestream chất lượng cao."
+        },
+        {
+          "icon": "app",
+          "title": "Quản lý mọi tiện ích với Hi FPT",
+          "description": "Tích điểm đổi quà, quản lý hợp đồng, gia hạn dịch vụ hoặc yêu cầu hỗ trợ tức thì."
+        },
+        {
+          "icon": "support",
+          "title": "Ưu đãi & chăm sóc tận tâm",
+          "description": "Đội ngũ kỹ thuật hỗ trợ nhanh trong suốt quá trình sử dụng dịch vụ."
+        }
+      ],
+      "promo": {
+        "text": "Giảm 50.000đ thanh toán online",
+        "validUntil": "2026-05-31"
+      }
+    }
   }
 ]

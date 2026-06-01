@@ -16,7 +16,13 @@ type LeanPackage = Record<string, unknown> & {
 /** Chuẩn hóa body admin / JSON seed → field lưu MongoDB */
 export function normalizePackageInput(input: Record<string, unknown>): Record<string, unknown> {
   const tagline = (input.tagline ?? input.shortDescription) as string | undefined;
-  const imageUrl = (input.heroImage ?? input.imageUrl) as string | undefined;
+  const bannerImageUrl = (input.bannerImage ?? input.bannerImageUrl) as string | undefined;
+  let imageUrl = (input.heroImage ?? input.imageUrl) as string | undefined;
+  const metaIn = (input.metadata as Record<string, unknown>) ?? {};
+  const bannerOnly = metaIn.bannerOnly === true;
+  if (!imageUrl && bannerImageUrl && bannerOnly) {
+    imageUrl = bannerImageUrl;
+  }
   const accentImageUrl = (input.accentImage ??
     input.accentImageUrl ??
     input.secondaryImage) as string | undefined;
@@ -55,6 +61,7 @@ export function normalizePackageInput(input: Record<string, unknown>): Record<st
     statIcon: input.statIcon,
     features: features ?? [],
     imageUrl,
+    bannerImageUrl,
     accentImageUrl,
     metadata,
     isActive: input.isActive,
@@ -75,6 +82,10 @@ export function toPackageFeResponse(doc: LeanPackage) {
 
   const tagline = (doc.tagline ?? doc.shortDescription ?? '') as string;
   const heroImage = (doc.heroImage ?? doc.imageUrl ?? '') as string;
+  const bannerImage = (doc.bannerImageUrl ??
+    doc.bannerImage ??
+    (meta.bannerImage as string | undefined) ??
+    '') as string;
   const accentImage = (doc.accentImage ?? doc.accentImageUrl ?? doc.secondaryImage) as
     | string
     | undefined;
@@ -112,6 +123,7 @@ export function toPackageFeResponse(doc: LeanPackage) {
     bullets: features,
     featureList: features,
     heroImage,
+    bannerImage: bannerImage || undefined,
     accentImage,
     secondaryImage: accentImage,
     imageUrl: heroImage,
@@ -121,6 +133,14 @@ export function toPackageFeResponse(doc: LeanPackage) {
     isActive: doc.isActive ?? true,
     sortOrder: doc.sortOrder ?? 0,
     metadata: meta,
+    audience: (meta.audience as string) ?? undefined,
+    downloadMbps: meta.downloadMbps as number | undefined,
+    uploadMbps: meta.uploadMbps as number | undefined,
+    maxDevices: meta.maxDevices as number | undefined,
+    heroHeadline: (meta.heroHeadline as string) ?? undefined,
+    lifestyleImageUrl: (meta.lifestyleImageUrl as string) ?? undefined,
+    includedEquipment: meta.includedEquipment,
+    privileges: meta.privileges,
     createdAt: doc.createdAt,
     updatedAt: doc.updatedAt,
   };

@@ -49,6 +49,7 @@ function enrichSeedRow(row: Record<string, unknown>): Record<string, unknown> {
     ...row,
     tagline: row.tagline ?? row.shortDescription,
     heroImage: row.heroImage ?? row.imageUrl,
+    bannerImage: row.bannerImage ?? row.bannerImageUrl,
     accentImage: row.accentImage ?? row.accentImageUrl,
     promoBadge,
     specLine,

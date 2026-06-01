@@ -61,6 +61,10 @@ export class Package {
   @Prop({ type: String, required: true, trim: true })
   imageUrl!: string;
 
+  /** Ảnh carousel banner trang chủ (21:9) — tách khỏi ảnh thẻ gói */
+  @Prop({ type: String, trim: true })
+  bannerImageUrl?: string;
+
   @Prop({ type: String, trim: true })
   accentImageUrl?: string;
 

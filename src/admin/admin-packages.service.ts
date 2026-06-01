@@ -101,23 +101,30 @@ export class AdminPackagesService {
       ...(urls.accentImage ? { accentImage: urls.accentImage } : {}),
     };
 
-    const payload = normalizePackageInput(merged);
-    if (!payload.shortDescription) {
+    const meta = (merged.metadata as Record<string, unknown>) ?? {};
+    if (meta.bannerOnly === true && !merged.tagline && !merged.shortDescription) {
+      merged.tagline = (merged.name as string) || 'Banner';
+      merged.shortDescription = merged.tagline;
+    }
+    if (!merged.tagline && !merged.shortDescription) {
       throw new BadRequestException('Thiếu tagline hoặc shortDescription');
     }
-    if (!payload.imageUrl && !urls.heroImage) {
+    const normalized = normalizePackageInput(merged);
+    if (!normalized.imageUrl && !urls.heroImage) {
       const fallback = this.cloudinary.fallbackHeroImageUrl();
-      merged.heroImage = fallback;
-      merged.imageUrl = fallback;
+      normalized.imageUrl = (normalized.bannerImageUrl as string) || fallback;
+    }
+    if (!normalized.shortDescription && (dto.tagline ?? dto.shortDescription)) {
+      normalized.shortDescription = dto.tagline ?? dto.shortDescription;
     }
 
     try {
       const doc = await this.packages.create({
-        ...(payload as Partial<Package>),
-        metadata: (payload.metadata as Record<string, unknown>) ?? {},
-        isActive: (payload.isActive as boolean | undefined) ?? true,
-        sortOrder: (payload.sortOrder as number | undefined) ?? 0,
-        price: payload.price === undefined ? null : (payload.price as number | null),
+        ...(normalized as Partial<Package>),
+        metadata: (normalized.metadata as Record<string, unknown>) ?? {},
+        isActive: (normalized.isActive as boolean | undefined) ?? true,
+        sortOrder: (normalized.sortOrder as number | undefined) ?? 0,
+        price: normalized.price === undefined ? null : (normalized.price as number | null),
       });
       return toPackageFeResponse(doc.toObject() as unknown as Record<string, unknown>);
     } catch (err: unknown) {

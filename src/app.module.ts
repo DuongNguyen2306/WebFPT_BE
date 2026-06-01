@@ -9,6 +9,10 @@ import { LeadsModule } from './leads/leads.module';
 import { AdminModule } from './admin/admin.module';
 import { CustomersModule } from './customers/customers.module';
 import { MeModule } from './me/me.module';
+import { BannersModule } from './banners/banners.module';
+import { FaqsModule } from './faqs/faqs.module';
+import { NavigationModule } from './navigation/navigation.module';
+import { PackageQuizModule } from './package-quiz/package-quiz.module';
 
 @Module({
   imports: [
@@ -34,6 +38,10 @@ import { MeModule } from './me/me.module';
     PackagesModule,
     LeadsModule,
     MeModule,
+    BannersModule,
+    FaqsModule,
+    NavigationModule,
+    PackageQuizModule,
     AdminModule,
   ],
   providers: [

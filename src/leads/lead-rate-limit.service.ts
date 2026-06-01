@@ -12,6 +12,12 @@ export class LeadRateLimitService {
     this.check(`phone:${phone}`, 3, 60 * 60 * 1000);
   }
 
+  /** Tra cứu lịch sử đơn theo SĐT (không đăng nhập) */
+  checkLookupByPhone(ip: string, phone: string) {
+    this.check(`lookup-ip:${ip || 'unknown'}`, 15, 15 * 60 * 1000);
+    this.check(`lookup-phone:${phone}`, 10, 60 * 60 * 1000);
+  }
+
   private check(key: string, max: number, windowMs: number) {
     const now = Date.now();
     const windowStart = now - windowMs;

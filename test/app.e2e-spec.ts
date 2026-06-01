@@ -7,6 +7,9 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 import { getModelToken } from '@nestjs/mongoose';
 import { AppModule } from '../src/app.module';
 import { Package } from '../src/packages/package.schema';
+import { Faq } from '../src/faqs/faq.schema';
+import { Menu } from '../src/navigation/menu.schema';
+import { PackageQuiz } from '../src/package-quiz/package-quiz.schema';
 import { BillingCycle, PackageType } from '../src/common/enums';
 
 describe('Telecom API (e2e)', () => {
@@ -103,5 +106,135 @@ describe('Telecom API (e2e)', () => {
     expect(res.body.id).toBeDefined();
     expect(res.body.status).toBe('NEW');
     expect(res.body.createdAt).toBeDefined();
+  });
+
+  it('GET /leads/history returns leads by phone', async () => {
+    const phone = '0988777666';
+    await request(app.getHttpServer())
+      .post('/api/v1/leads')
+      .set('X-Forwarded-For', '203.0.113.11')
+      .send({
+        fullName: 'Tra cứu test',
+        phone,
+        installAddress: '456 Đường XYZ',
+      })
+      .expect(201);
+
+    const res = await request(app.getHttpServer())
+      .get('/api/v1/leads/history')
+      .query({ phone })
+      .set('X-Forwarded-For', '203.0.113.12')
+      .expect(200);
+
+    expect(res.body.phone).toBe(phone);
+    expect(res.body.items.length).toBeGreaterThanOrEqual(1);
+    expect(res.body.items[0].fullName).toBe('Tra cứu test');
+    expect(res.body.items[0].packageSnapshot).toBeDefined();
+  });
+
+  it('GET /faqs returns only visible FAQs sorted by displayOrder', async () => {
+    const faqModel = app.get(getModelToken(Faq.name));
+    await faqModel.create([
+      {
+        question: 'Ẩn',
+        answer: 'Không hiện',
+        displayOrder: 0,
+        isVisible: false,
+      },
+      {
+        question: 'Câu 2',
+        answer: 'Trả lời 2',
+        displayOrder: 2,
+        isVisible: true,
+      },
+      {
+        question: 'Câu 1',
+        answer: 'Trả lời 1',
+        displayOrder: 1,
+        isVisible: true,
+      },
+    ]);
+
+    const res = await request(app.getHttpServer()).get('/api/v1/faqs').expect(200);
+
+    expect(res.body.items.length).toBeGreaterThanOrEqual(2);
+    const visible = res.body.items.filter((f: { question: string }) =>
+      ['Câu 1', 'Câu 2'].includes(f.question),
+    );
+    expect(visible[0].question).toBe('Câu 1');
+    expect(visible[1].question).toBe('Câu 2');
+    expect(visible.every((f: { isVisible?: boolean }) => f.isVisible === undefined)).toBe(true);
+  });
+
+  it('GET /navigation returns visible menu groups with visible items', async () => {
+    const menuModel = app.get(getModelToken(Menu.name));
+    await menuModel.create({
+      title: 'Internet - Wifi',
+      icon: 'wifi',
+      displayOrder: 0,
+      isVisible: true,
+      items: [
+        { label: 'Internet Wi-Fi 7', link: '/#internet', isNew: false, isVisible: true },
+        { label: 'Ẩn', link: '/hidden', isNew: false, isVisible: false },
+      ],
+    });
+    await menuModel.create({
+      title: 'Ẩn nhóm',
+      icon: 'hidden',
+      displayOrder: 99,
+      isVisible: false,
+      items: [{ label: 'X', link: '/', isVisible: true }],
+    });
+
+    const res = await request(app.getHttpServer()).get('/api/v1/navigation').expect(200);
+
+    const group = res.body.items.find((g: { title: string }) => g.title === 'Internet - Wifi');
+    expect(group).toBeDefined();
+    expect(group.items.length).toBe(1);
+    expect(group.items[0].label).toBe('Internet Wi-Fi 7');
+    expect(res.body.items.every((g: { title: string }) => g.title !== 'Ẩn nhóm')).toBe(true);
+  });
+
+  it('POST /package-quiz/recommend returns package types', async () => {
+    const quizModel = app.get(getModelToken(PackageQuiz.name));
+    await quizModel.create({
+      code: 'e2e-quiz',
+      tagline: 'Test',
+      icon: 'wifi',
+      isVisible: true,
+      questions: [
+        {
+          code: 'q1',
+          title: 'Nhu cầu?',
+          multiSelect: true,
+          isVisible: true,
+          options: [
+            {
+              code: 'game',
+              label: 'Game',
+              icon: 'gamepad',
+              isVisible: true,
+              typeWeights: [
+                { packageType: 'SPEEDX', weight: 5 },
+                { packageType: 'INTERNET', weight: 1 },
+              ],
+            },
+          ],
+        },
+      ],
+    });
+
+    const res = await request(app.getHttpServer())
+      .post('/api/v1/package-quiz/recommend')
+      .send({
+        quizCode: 'e2e-quiz',
+        answers: [{ questionCode: 'q1', optionCodes: ['game'] }],
+      })
+      .expect(200);
+
+    expect(res.body.recommendedTypes).toContain('SPEEDX');
+    expect(res.body.primaryType).toBe('SPEEDX');
+    expect(res.body.resultsPath).toContain('ket-qua-tu-van');
+    expect(Array.isArray(res.body.packages)).toBe(true);
   });
 });

@@ -118,6 +118,11 @@ export class CreatePackageDto {
   @IsString()
   heroImage?: string;
 
+  @ApiPropertyOptional({ description: 'Ảnh banner carousel trang chủ (21:9)' })
+  @IsOptional()
+  @IsString()
+  bannerImage?: string;
+
   @ApiPropertyOptional()
   @IsOptional()
   @IsString()

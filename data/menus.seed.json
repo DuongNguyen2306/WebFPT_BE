@@ -1,0 +1,60 @@
+[
+  {
+    "title": "Internet - Wifi",
+    "icon": "wifi",
+    "displayOrder": 0,
+    "isVisible": true,
+    "items": [
+      { "label": "Combo Internet thể thao giải trí", "link": "/#internet", "packageCode": "internet-combo-tv", "displayOrder": 0, "isNew": true, "isVisible": true },
+      { "label": "Internet Wi-Fi 7", "link": "/goi/internet-giga", "packageCode": "internet-giga", "displayOrder": 1, "isNew": false, "isVisible": true },
+      { "label": "Internet cá nhân", "link": "/goi/internet-sky-f1", "packageCode": "internet-sky-f1", "displayOrder": 2, "isNew": false, "isVisible": true },
+      { "label": "Internet gia đình", "link": "/goi/internet-giga-plus", "packageCode": "internet-giga-plus", "displayOrder": 3, "isNew": false, "isVisible": true },
+      { "label": "Internet game thủ", "link": "/goi/speedx-gaming", "packageCode": "speedx-gaming", "displayOrder": 4, "isNew": false, "isVisible": true },
+      { "label": "Internet doanh nghiệp", "link": "/goi/speedx-enterprise", "packageCode": "speedx-enterprise", "displayOrder": 5, "isNew": false, "isVisible": true }
+    ]
+  },
+  {
+    "title": "Truyền hình & Giải trí",
+    "icon": "play-circle",
+    "displayOrder": 1,
+    "isVisible": true,
+    "items": [
+      { "label": "FPT Play", "link": "/goi/fpt-play-family", "packageCode": "fpt-play-family", "displayOrder": 0, "isNew": false, "isVisible": true },
+      { "label": "Combo Internet Ngoại hạng Anh", "link": "/goi/fpt-play-kplus", "packageCode": "fpt-play-kplus", "displayOrder": 1, "isNew": true, "isVisible": true },
+      { "label": "Lịch thi đấu Ngoại hạng Anh", "link": "/#truyen-hinh", "displayOrder": 2, "isNew": true, "isVisible": true }
+    ]
+  },
+  {
+    "title": "FPT Camera",
+    "icon": "cctv",
+    "displayOrder": 2,
+    "isVisible": true,
+    "items": [
+      { "label": "FPT Camera AI", "link": "/goi/camera-ai-4mp", "packageCode": "camera-ai-4mp", "displayOrder": 0, "isNew": false, "isVisible": true },
+      { "label": "FPT Smart Home", "link": "/goi/service-smarthome", "packageCode": "service-smarthome", "displayOrder": 1, "isNew": false, "isVisible": true },
+      { "label": "Access Point", "link": "/goi/speedx-mesh-pro", "packageCode": "speedx-mesh-pro", "displayOrder": 2, "isNew": false, "isVisible": true },
+      { "label": "Smart Tivi", "link": "/goi/fpt-play-max", "packageCode": "fpt-play-max", "displayOrder": 3, "isNew": false, "isVisible": true }
+    ]
+  },
+  {
+    "title": "Nâng cấp dịch vụ FPT",
+    "icon": "home-wifi",
+    "displayOrder": 3,
+    "isVisible": true,
+    "items": [
+      { "label": "Nâng cấp Combo Internet Truyền hình", "link": "/goi/internet-combo-tv", "packageCode": "internet-combo-tv", "displayOrder": 0, "isNew": false, "isVisible": true },
+      { "label": "Mua thêm Camera FPT", "link": "/goi/camera-kit-4", "packageCode": "camera-kit-4", "displayOrder": 1, "isNew": false, "isVisible": true }
+    ]
+  },
+  {
+    "title": "Dịch vụ",
+    "icon": "shield",
+    "displayOrder": 4,
+    "isVisible": true,
+    "items": [
+      { "label": "Dịch vụ F-Safe", "link": "/goi/service-f-safe", "packageCode": "service-f-safe", "displayOrder": 0, "isNew": false, "isVisible": true },
+      { "label": "Dịch vụ UltraFast", "link": "/goi/speedx-triple", "packageCode": "speedx-triple", "displayOrder": 1, "isNew": false, "isVisible": true },
+      { "label": "Dịch vụ HyperFast", "link": "/goi/speedx-lite", "packageCode": "speedx-lite", "displayOrder": 2, "isNew": true, "isVisible": true }
+    ]
+  }
+]

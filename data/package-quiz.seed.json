@@ -1,0 +1,156 @@
+[
+  {
+    "code": "home-needs",
+    "tagline": "Gói Internet dành cho bạn",
+    "icon": "wifi",
+    "displayOrder": 0,
+    "isVisible": true,
+    "questions": [
+      {
+        "code": "wifi-usage",
+        "title": "Bạn chủ yếu sử dụng WiFi tại nhà để làm gì?",
+        "description": "Chọn một hoặc nhiều mục phù hợp với bạn.",
+        "multiSelect": true,
+        "displayOrder": 0,
+        "isVisible": true,
+        "options": [
+          {
+            "code": "study",
+            "label": "Học tập / Làm việc",
+            "icon": "laptop",
+            "displayOrder": 0,
+            "isVisible": true,
+            "typeWeights": [{ "packageType": "INTERNET", "weight": 3 }]
+          },
+          {
+            "code": "media",
+            "label": "Giải trí / Phim ảnh",
+            "icon": "clapperboard",
+            "displayOrder": 1,
+            "isVisible": true,
+            "typeWeights": [
+              { "packageType": "INTERNET", "weight": 2 },
+              { "packageType": "FPT_PLAY", "weight": 4 }
+            ]
+          },
+          {
+            "code": "game",
+            "label": "Chơi game",
+            "icon": "gamepad",
+            "displayOrder": 2,
+            "isVisible": true,
+            "typeWeights": [
+              { "packageType": "SPEEDX", "weight": 4 },
+              { "packageType": "INTERNET", "weight": 2 }
+            ]
+          },
+          {
+            "code": "smarthome",
+            "label": "Nhà thông minh",
+            "icon": "home",
+            "displayOrder": 3,
+            "isVisible": true,
+            "typeWeights": [
+              { "packageType": "CAMERA", "weight": 3 },
+              { "packageType": "SERVICE", "weight": 3 },
+              { "packageType": "INTERNET", "weight": 1 }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "household-size",
+        "title": "Quy mô hộ gia đình sử dụng?",
+        "description": "Chọn một mục gần đúng nhất với bạn.",
+        "multiSelect": false,
+        "displayOrder": 1,
+        "isVisible": true,
+        "options": [
+          {
+            "code": "solo",
+            "label": "1–2 người",
+            "icon": "user",
+            "displayOrder": 0,
+            "isVisible": true,
+            "typeWeights": [{ "packageType": "INTERNET", "weight": 3 }]
+          },
+          {
+            "code": "family",
+            "label": "3–5 người",
+            "icon": "users",
+            "displayOrder": 1,
+            "isVisible": true,
+            "typeWeights": [
+              { "packageType": "INTERNET", "weight": 3 },
+              { "packageType": "FPT_PLAY", "weight": 2 },
+              { "packageType": "CAMERA", "weight": 1 }
+            ]
+          },
+          {
+            "code": "large",
+            "label": "Trên 5 người / nhiều thiết bị",
+            "icon": "users",
+            "displayOrder": 2,
+            "isVisible": true,
+            "typeWeights": [
+              { "packageType": "INTERNET", "weight": 2 },
+              { "packageType": "SPEEDX", "weight": 3 },
+              { "packageType": "FPT_PLAY", "weight": 2 }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "priority",
+        "title": "Bạn ưu tiên điều gì nhất?",
+        "description": "Chọn một mục — giúp chúng tôi sắp xếp gói phù hợp.",
+        "multiSelect": false,
+        "displayOrder": 2,
+        "isVisible": true,
+        "options": [
+          {
+            "code": "speed",
+            "label": "Tốc độ / ổn định",
+            "icon": "zap",
+            "displayOrder": 0,
+            "isVisible": true,
+            "typeWeights": [
+              { "packageType": "SPEEDX", "weight": 4 },
+              { "packageType": "INTERNET", "weight": 2 }
+            ]
+          },
+          {
+            "code": "combo-tv",
+            "label": "Combo Internet + Truyền hình",
+            "icon": "play-circle",
+            "displayOrder": 1,
+            "isVisible": true,
+            "typeWeights": [
+              { "packageType": "FPT_PLAY", "weight": 4 },
+              { "packageType": "INTERNET", "weight": 3 }
+            ]
+          },
+          {
+            "code": "security",
+            "label": "An ninh / Camera / Smart home",
+            "icon": "cctv",
+            "displayOrder": 2,
+            "isVisible": true,
+            "typeWeights": [
+              { "packageType": "CAMERA", "weight": 4 },
+              { "packageType": "SERVICE", "weight": 2 }
+            ]
+          },
+          {
+            "code": "value",
+            "label": "Tiết kiệm chi phí",
+            "icon": "wallet",
+            "displayOrder": 3,
+            "isVisible": true,
+            "typeWeights": [{ "packageType": "INTERNET", "weight": 4 }]
+          }
+        ]
+      }
+    ]
+  }
+]

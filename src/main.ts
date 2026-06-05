@@ -1,10 +1,10 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import { AppModule } from './app.module';
+import { setupSwagger } from './swagger/swagger-setup';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -31,19 +31,14 @@ async function bootstrap() {
     }),
   );
 
-  const swaggerConfig = new DocumentBuilder()
-    .setTitle('Telecom Landing API')
-    .setDescription(
-      'API cho landing đăng ký dịch vụ: gói cước, lead, khách hàng, quản trị. Refresh token được đặt trong cookie HttpOnly (xem README).',
-    )
-    .setVersion('1.0')
-    .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'JWT' }, 'access-token')
-    .addCookieAuth('refreshToken')
-    .build();
-  const document = SwaggerModule.createDocument(app, swaggerConfig);
-  SwaggerModule.setup('api/docs', app, document);
+  setupSwagger(app);
 
   const port = process.env.PORT ? Number(process.env.PORT) : 3000;
+  const discordConfigured = Boolean(process.env.DISCORD_WEBHOOK_URL?.trim());
+  console.log(
+    `[Bootstrap] Discord webhook: ${discordConfigured ? 'ĐÃ CẤU HÌNH' : 'CHƯA CÓ DISCORD_WEBHOOK_URL'}`,
+  );
+
   const server = await app.listen(port);
   const httpTimeoutMs = Number(process.env.HTTP_REQUEST_TIMEOUT_MS ?? 360_000);
   server.setTimeout(httpTimeoutMs);

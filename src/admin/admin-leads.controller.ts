@@ -29,7 +29,9 @@ export class AdminLeadsController {
   }
 
   @Patch(':id')
-  @ApiOperation({ summary: 'Cập nhật trạng thái / ghi chú lead' })
+  @ApiOperation({
+    summary: 'Cập nhật đơn đăng ký (trạng thái, gói, ghi chú, địa chỉ)',
+  })
   patch(@Param('id') id: string, @Body() dto: PatchAdminLeadDto) {
     return this.leads.updateAdmin(id, dto);
   }

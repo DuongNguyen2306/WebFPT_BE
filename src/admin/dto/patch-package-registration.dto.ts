@@ -2,9 +2,11 @@ import { ApiPropertyOptional } from '@nestjs/swagger';
 import { IsEnum, IsOptional, IsString, MinLength } from 'class-validator';
 import { LeadStatus } from '../../common/enums';
 
-export class PatchAdminLeadDto {
+/** Admin cập nhật đơn đăng ký sau tư vấn / chốt gói khác */
+export class PatchPackageRegistrationDto {
   @ApiPropertyOptional({
-    description: 'Gói quan tâm mới sau khi tư vấn',
+    description: 'Gói quan tâm mới sau khi tư vấn (cập nhật tên trong snapshot)',
+    example: 'Combo Internet - Truyền hình FPT Play',
   })
   @IsOptional()
   @IsString()
@@ -19,17 +21,12 @@ export class PatchAdminLeadDto {
   @IsEnum(LeadStatus)
   status?: LeadStatus;
 
-  @ApiPropertyOptional({ description: 'Ghi chú tư vấn (alias adminNotes)' })
-  @IsOptional()
-  @IsString()
-  adminNote?: string;
-
-  @ApiPropertyOptional({ description: 'Ghi chú tư vấn' })
+  @ApiPropertyOptional({ description: 'Ghi chú tư vấn của admin' })
   @IsOptional()
   @IsString()
   adminNotes?: string;
 
-  @ApiPropertyOptional({ description: 'Địa chỉ lắp đặt mới' })
+  @ApiPropertyOptional({ description: 'Địa chỉ lắp đặt mới nếu khách đổi' })
   @IsOptional()
   @IsString()
   @MinLength(5)

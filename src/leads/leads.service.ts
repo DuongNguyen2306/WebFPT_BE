@@ -8,6 +8,15 @@ import { normalizeVnPhone } from '../common/utils/phone.util';
 import { LeadRateLimitService } from './lead-rate-limit.service';
 import { LeadStatus } from '../common/enums';
 import { toLeadPublicItem, toLeadPublicList } from './lead-public.mapper';
+import { DiscordNotifyService } from '../notifications/discord-notify.service';
+
+export type AdminLeadPatch = {
+  status?: LeadStatus;
+  adminNote?: string;
+  adminNotes?: string;
+  packageName?: string;
+  address?: string;
+};
 
 @Injectable()
 export class LeadsService {
@@ -15,6 +24,7 @@ export class LeadsService {
     @InjectModel(Lead.name) private readonly model: Model<LeadDocument>,
     private readonly packages: PackagesService,
     private readonly rate: LeadRateLimitService,
+    private readonly discord: DiscordNotifyService,
   ) {}
 
   async create(dto: CreateLeadDto, opts: { ip?: string; customerId?: string }) {
@@ -56,10 +66,25 @@ export class LeadsService {
       ip: opts.ip,
     });
 
+    const createdAt = doc.get('createdAt') as Date;
+    console.log('[Leads] Đơn mới đã lưu DB, kích hoạt Discord notify', {
+      leadId: doc._id.toString(),
+      phone: doc.phone,
+      discordWebhookConfigured: Boolean(process.env.DISCORD_WEBHOOK_URL?.trim()),
+    });
+    void this.discord.notifyNewRegistration({
+      createdAt,
+      fullName: doc.fullName,
+      phone: doc.phone,
+      address: doc.installAddress,
+      packageName: packageSnapshot?.name ?? 'Chưa chọn gói',
+      source: doc.source,
+    });
+
     return {
       id: doc._id.toString(),
       status: doc.status,
-      createdAt: doc.get('createdAt') as Date,
+      createdAt,
       fullName: doc.fullName,
       phone: doc.phone,
       installAddress: doc.installAddress,
@@ -140,13 +165,44 @@ export class LeadsService {
     ]).then(([items, total]) => ({ items, total, page: filters.page, limit: filters.limit }));
   }
 
-  async updateAdmin(id: string, patch: { status?: LeadStatus; adminNote?: string }) {
+  async updateAdmin(id: string, patch: AdminLeadPatch) {
     if (!Types.ObjectId.isValid(id)) {
       throw new NotFoundException('Lead không tồn tại');
     }
+
+    const existing = await this.model.findById(id).lean().exec();
+    if (!existing) {
+      throw new NotFoundException('Lead không tồn tại');
+    }
+
     const $set: Record<string, unknown> = {};
     if (patch.status !== undefined) $set.status = patch.status;
-    if (patch.adminNote !== undefined) $set.adminNote = patch.adminNote;
+
+    const note = patch.adminNotes ?? patch.adminNote;
+    if (note !== undefined) $set.adminNote = note.trim();
+
+    if (patch.address !== undefined) {
+      $set.installAddress = patch.address.trim();
+    }
+
+    if (patch.packageName !== undefined) {
+      const name = patch.packageName.trim();
+      if (existing.packageSnapshot) {
+        $set.packageSnapshot = { ...existing.packageSnapshot, name };
+      } else {
+        $set.packageSnapshot = {
+          code: '',
+          name,
+          price: null,
+          type: 'SERVICE',
+        };
+      }
+    }
+
+    if (Object.keys($set).length === 0) {
+      throw new BadRequestException('Không có trường nào để cập nhật');
+    }
+
     const doc = await this.model.findByIdAndUpdate(id, { $set }, { new: true }).lean().exec();
     if (!doc) {
       throw new NotFoundException('Lead không tồn tại');

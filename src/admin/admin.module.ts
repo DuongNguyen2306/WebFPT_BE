@@ -7,11 +7,17 @@ import { PackagesModule } from '../packages/packages.module';
 import { LeadsModule } from '../leads/leads.module';
 import { ConfigModule } from '@nestjs/config';
 import { UploadModule } from '../upload/upload.module';
+import { AdminPackageRegistrationsController } from './admin-package-registrations.controller';
 import { AdminPackagesService } from './admin-packages.service';
 
 @Module({
   imports: [ConfigModule, AuthModule, PackagesModule, LeadsModule, UploadModule],
-  controllers: [AdminAuthController, AdminPackagesController, AdminLeadsController],
+  controllers: [
+    AdminAuthController,
+    AdminPackagesController,
+    AdminLeadsController,
+    AdminPackageRegistrationsController,
+  ],
   providers: [AdminPackagesService],
 })
 export class AdminModule {}

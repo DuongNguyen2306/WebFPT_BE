@@ -1,0 +1,3680 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/v1/auth/register": {
+      "post": {
+        "operationId": "AuthController_register",
+        "summary": "Đăng ký khách hàng (CUSTOMER)",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponseDto"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Username đã tồn tại",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/auth/login-unified": {
+      "post": {
+        "operationId": "AuthController_loginUnified",
+        "summary": "Đăng nhập chung (admin hoặc khách)",
+        "description": "Body: `{ account, password }`. Admin: account = email. Khách: account = username. Set cookie refreshToken.",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnifiedLoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "operationId": "AuthController_login",
+        "summary": "Đăng nhập khách (username + password)",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/auth/refresh": {
+      "post": {
+        "operationId": "AuthController_refresh",
+        "summary": "Làm mới access token",
+        "description": "Cookie `refreshToken` (credentials: include). Không cần Bearer.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RefreshResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/auth/session": {
+      "get": {
+        "operationId": "AuthController_session",
+        "summary": "Phiên hiện tại (CUSTOMER hoặc ADMIN)",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Auth"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "operationId": "AuthController_logout",
+        "summary": "Xóa cookie refreshToken",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OkResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/packages": {
+      "get": {
+        "operationId": "PackagesPublicController_list",
+        "summary": "Danh sách gói đang bán (isActive=true)",
+        "description": "Query `type`: INTERNET | SPEEDX | FPT_PLAY | CAMERA | SERVICE. Response: mảng PackagePublicDto.",
+        "parameters": [
+          {
+            "name": "type",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "INTERNET",
+                "SPEEDX",
+                "FPT_PLAY",
+                "CAMERA",
+                "SERVICE"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PackagePublicDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Public — Packages"
+        ]
+      }
+    },
+    "/api/v1/packages/by-code/{code}": {
+      "get": {
+        "operationId": "PackagesPublicController_byCode",
+        "summary": "Chi tiết gói theo code (vd. internet-giga)",
+        "parameters": [
+          {
+            "name": "code",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "example": "internet-giga",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PackagePublicDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Public — Packages"
+        ]
+      }
+    },
+    "/api/v1/packages/{id}": {
+      "get": {
+        "operationId": "PackagesPublicController_byId",
+        "summary": "Chi tiết gói theo MongoDB id",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PackagePublicDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Public — Packages"
+        ]
+      }
+    },
+    "/api/v1/leads": {
+      "post": {
+        "operationId": "LeadsPublicController_create",
+        "summary": "Gửi đơn đăng ký / tư vấn",
+        "description": "Optional Bearer khách → gắn customerId. Rate limit theo IP/SĐT.",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLeadDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadCreateResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Public — Leads"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/leads/history": {
+      "get": {
+        "operationId": "LeadsPublicController_historyByPhone",
+        "summary": "Tra cứu lịch sử đăng ký theo SĐT (không đăng nhập)",
+        "parameters": [
+          {
+            "name": "phone",
+            "required": true,
+            "in": "query",
+            "description": "Số điện thoại đã dùng khi đăng ký",
+            "schema": {
+              "example": "0912345678",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadHistoryResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Public — Leads"
+        ]
+      }
+    },
+    "/api/v1/leads/history/{id}": {
+      "get": {
+        "operationId": "LeadsPublicController_historyDetail",
+        "summary": "Chi tiết một đơn (SĐT phải khớp)",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "MongoDB ObjectId",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "phone",
+            "required": true,
+            "in": "query",
+            "description": "Số điện thoại đã dùng khi đăng ký",
+            "schema": {
+              "example": "0912345678",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadPublicItemDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Public — Leads"
+        ]
+      }
+    },
+    "/api/v1/me": {
+      "get": {
+        "operationId": "MeController_getMe",
+        "summary": "Profile khách đang đăng nhập",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthUserResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Me (Khách)"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "MeController_patchMe",
+        "summary": "Cập nhật profile",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMeDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthUserResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Me (Khách)"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/me/leads": {
+      "get": {
+        "operationId": "MeController_myLeads",
+        "summary": "Đơn đã gửi khi đăng nhập (customerId)",
+        "description": "Khác GET /leads/history — chỉ đơn gắn tài khoản.",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 20,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MyLeadsListResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Me (Khách)"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/banners": {
+      "get": {
+        "operationId": "BannersPublicController_list",
+        "summary": "Banner carousel trang chủ (isActive=true)",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BannerListResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Public — Banners"
+        ]
+      }
+    },
+    "/api/v1/admin/banners": {
+      "get": {
+        "operationId": "AdminBannersController_list",
+        "summary": "Danh sách banner (admin)",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Banners"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "AdminBannersController_create",
+        "summary": "Tạo banner trang chủ (ảnh URL từ /admin/uploads/image)",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBannerDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Banners"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/banners/{id}": {
+      "get": {
+        "operationId": "AdminBannersController_getOne",
+        "summary": "Chi tiết banner",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Banners"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "AdminBannersController_update",
+        "summary": "Cập nhật banner",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBannerDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Banners"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "AdminBannersController_remove",
+        "summary": "Xóa banner",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Banners"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/faqs": {
+      "get": {
+        "operationId": "FaqsPublicController_list",
+        "summary": "Danh sách FAQ (isVisible=true, sort displayOrder)",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FaqListResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Public — FAQs"
+        ]
+      }
+    },
+    "/api/v1/admin/faqs": {
+      "get": {
+        "operationId": "AdminFaqsController_list",
+        "summary": "Danh sách FAQ (admin, gồm cả ẩn)",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — FAQs"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "AdminFaqsController_create",
+        "summary": "Tạo FAQ mới",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFaqDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — FAQs"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/faqs/{id}": {
+      "get": {
+        "operationId": "AdminFaqsController_getOne",
+        "summary": "Chi tiết FAQ",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — FAQs"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      },
+      "put": {
+        "operationId": "AdminFaqsController_update",
+        "summary": "Cập nhật FAQ",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFaqDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — FAQs"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "AdminFaqsController_remove",
+        "summary": "Xóa FAQ",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — FAQs"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/navigation": {
+      "get": {
+        "operationId": "NavigationPublicController_list",
+        "summary": "Mega-menu (nhóm + items visible)",
+        "description": "FE: icon string → map Lucide. Item isNew → badge「Mới」.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NavigationListResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Public — Navigation"
+        ]
+      }
+    },
+    "/api/v1/admin/navigation": {
+      "get": {
+        "operationId": "AdminNavigationController_list",
+        "summary": "Danh sách nhóm menu (admin, gồm cả ẩn)",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Navigation"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "AdminNavigationController_create",
+        "summary": "Tạo nhóm menu mới",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMenuDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Navigation"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/navigation/reorder": {
+      "patch": {
+        "operationId": "AdminNavigationController_reorder",
+        "summary": "Sắp xếp lại thứ tự các cột menu (trái → phải)",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReorderNavigationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Navigation"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/navigation/{id}": {
+      "get": {
+        "operationId": "AdminNavigationController_getOne",
+        "summary": "Chi tiết nhóm menu",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Navigation"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      },
+      "put": {
+        "operationId": "AdminNavigationController_update",
+        "summary": "Cập nhật toàn bộ nhóm menu",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMenuDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Navigation"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "AdminNavigationController_patch",
+        "summary": "Cập nhật một phần nhóm menu",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMenuDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Navigation"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "AdminNavigationController_remove",
+        "summary": "Xóa nhóm menu",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Navigation"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/package-quiz": {
+      "get": {
+        "operationId": "PackageQuizPublicController_getActive",
+        "summary": "Lấy bộ câu hỏi gợi ý (wizard 2–3 câu)",
+        "description": "Query `code=home-needs`. Trả questions[], mỗi câu có multiSelect và options (label, icon, code).",
+        "parameters": [
+          {
+            "name": "code",
+            "required": false,
+            "in": "query",
+            "description": "Mã bộ câu hỏi — mặc định quiz visible đầu tiên",
+            "schema": {
+              "example": "home-needs",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PackageQuizPublicDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Public — Package quiz"
+        ]
+      }
+    },
+    "/api/v1/package-quiz/recommend": {
+      "post": {
+        "operationId": "PackageQuizPublicController_recommend",
+        "summary": "Nộp đủ câu trả lời → gợi ý loại gói + danh sách gói",
+        "description": "Body `answers[]` (2–3 câu). Response: recommendedTypes, packages[], resultsPath cho FE navigate.",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecommendPackageQuizDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PackageQuizRecommendResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Public — Package quiz"
+        ]
+      }
+    },
+    "/api/v1/admin/package-quiz": {
+      "get": {
+        "operationId": "AdminPackageQuizController_list",
+        "summary": "Danh sách bộ câu hỏi gợi ý gói",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Package quiz"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "AdminPackageQuizController_create",
+        "summary": "Tạo bộ câu hỏi",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePackageQuizDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Package quiz"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/package-quiz/{id}": {
+      "get": {
+        "operationId": "AdminPackageQuizController_getOne",
+        "summary": "Chi tiết bộ câu hỏi",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Package quiz"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      },
+      "put": {
+        "operationId": "AdminPackageQuizController_update",
+        "summary": "Cập nhật toàn bộ bộ câu hỏi",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePackageQuizDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Package quiz"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "AdminPackageQuizController_patch",
+        "summary": "Cập nhật một phần",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePackageQuizDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Package quiz"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "AdminPackageQuizController_remove",
+        "summary": "Xóa bộ câu hỏi",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Package quiz"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/auth/login": {
+      "post": {
+        "operationId": "AdminAuthController_login",
+        "summary": "Đăng nhập quản trị (email + password)",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminLoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Auth"
+        ]
+      }
+    },
+    "/api/v1/admin/auth/me": {
+      "get": {
+        "operationId": "AdminAuthController_me",
+        "summary": "Profile admin đang đăng nhập",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Auth"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/packages": {
+      "get": {
+        "operationId": "AdminPackagesController_list",
+        "summary": "Danh sách gói (admin, filter + phân trang)",
+        "parameters": [
+          {
+            "name": "type",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "INTERNET",
+                "SPEEDX",
+                "FPT_PLAY",
+                "CAMERA",
+                "SERVICE"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "isActive",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 20,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Packages"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "AdminPackagesController_create",
+        "summary": "Tạo gói (JSON)",
+        "description": "Body JSON. Ảnh: gửi heroImage/imageUrl (URL Cloudinary) hoặc dùng POST /admin/packages/with-image (multipart).",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePackageDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Packages"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/packages/with-image": {
+      "post": {
+        "operationId": "AdminPackagesController_createWithImage",
+        "summary": "Tạo gói + upload ảnh Cloudinary (1 request)",
+        "description": "multipart/form-data: field `file` (ảnh chính, tuỳ chọn), `accentFile` (tuỳ chọn). Nếu Cloudinary lỗi hoặc không gửi file → dùng PACKAGE_FALLBACK_HERO_IMAGE_URL. Các field text: type, code, name, tagline, price, billingCycle, features, …",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "type",
+                  "code",
+                  "name",
+                  "billingCycle"
+                ],
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Ảnh hero — thử Cloudinary, lỗi thì ảnh dự phòng"
+                  },
+                  "accentFile": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Ảnh phụ (tuỳ chọn)"
+                  },
+                  "folder": {
+                    "type": "string",
+                    "example": "telecom-packages/heroes"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "INTERNET"
+                  },
+                  "category": {
+                    "type": "string",
+                    "example": "internet",
+                    "description": "Alias của type"
+                  },
+                  "code": {
+                    "type": "string",
+                    "example": "internet-giga-new"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "tagline": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "number",
+                    "example": 195000
+                  },
+                  "billingCycle": {
+                    "type": "string",
+                    "example": "MONTHLY"
+                  },
+                  "speedLabel": {
+                    "type": "string",
+                    "example": "1 Gbps"
+                  },
+                  "speed": {
+                    "type": "string",
+                    "description": "Alias speedLabel"
+                  },
+                  "features": {
+                    "type": "string",
+                    "example": "[\"Modem Wi-Fi 6\",\"Hỗ trợ 24/7\"]"
+                  },
+                  "heroImage": {
+                    "type": "string",
+                    "description": "URL nếu không upload file"
+                  },
+                  "metadata": {
+                    "type": "string",
+                    "example": "{\"downloadMbps\":1000,\"uploadMbps\":500}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Packages"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/packages/{id}": {
+      "patch": {
+        "operationId": "AdminPackagesController_update",
+        "summary": "Cập nhật gói",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePackageDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Packages"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "AdminPackagesController_remove",
+        "summary": "Soft delete gói",
+        "description": "Đặt isActive = false (không xóa document).",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Packages"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/leads": {
+      "get": {
+        "operationId": "AdminLeadsController_list",
+        "summary": "Danh sách lead (filter + phân trang)",
+        "parameters": [
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "NEW",
+                "CONTACTED",
+                "CONVERTED",
+                "CANCELLED"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "from",
+            "required": false,
+            "in": "query",
+            "description": "ISO date",
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "name": "to",
+            "required": false,
+            "in": "query",
+            "description": "ISO date",
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "name": "phone",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 20,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Leads"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/leads/{id}": {
+      "patch": {
+        "operationId": "AdminLeadsController_patch",
+        "summary": "Cập nhật trạng thái / ghi chú lead",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchAdminLeadDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Leads"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/uploads/health": {
+      "get": {
+        "operationId": "AdminUploadController_health",
+        "summary": "Kiểm tra Cloudinary đã cấu hình (không upload)",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Upload (Cloudinary)"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/uploads/image": {
+      "post": {
+        "operationId": "AdminUploadController_uploadFile",
+        "summary": "Upload ảnh từ máy (multipart)",
+        "description": "Field form: `file`. Trả URL Cloudinary — dán vào heroImage / accentImage khi tạo/sửa gói.",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "file"
+                ],
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "folder": {
+                    "type": "string",
+                    "example": "packages/heroes"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Upload (Cloudinary)"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/uploads/from-url": {
+      "post": {
+        "operationId": "AdminUploadController_uploadFromUrl",
+        "summary": "Upload ảnh từ URL công khai",
+        "description": "BE tải ảnh từ URL và đưa lên Cloudinary. Dùng khi admin dán link ảnh có sẵn.",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UploadFromUrlDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin — Upload (Cloudinary)"
+        ],
+        "security": [
+          {
+            "access-token": []
+          }
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "FPT Telecom Landing API",
+    "description": "REST API cho landing page & admin FPT Telecom.\n\n**Base path:** `/api/v1`\n\n**Xác thực:**\n- Access token: header `Authorization: Bearer <accessToken>`\n- Refresh token: cookie HttpOnly `refreshToken` (credentials: include)\n\n**FE public (không bắt buộc login):** packages, leads, faqs, navigation, package-quiz, banners\n\n**Rate limit:** leads history, lead create theo IP/SĐT\n\n**Swagger UI:** `/api/docs` · **OpenAPI JSON:** `/api/docs-json`",
+    "version": "1.0.0",
+    "contact": {
+      "name": "FPT Telecom BE",
+      "url": "",
+      "email": ""
+    }
+  },
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "Đăng ký, đăng nhập, refresh cookie, session"
+    },
+    {
+      "name": "Public — Packages",
+      "description": "Danh sách & chi tiết gói cước (khách)"
+    },
+    {
+      "name": "Public — Leads",
+      "description": "Đăng ký dịch vụ, tra cứu đơn theo SĐT"
+    },
+    {
+      "name": "Public — FAQs",
+      "description": "Câu hỏi thường gặp"
+    },
+    {
+      "name": "Public — Navigation",
+      "description": "Mega-menu điều hướng"
+    },
+    {
+      "name": "Public — Package quiz",
+      "description": "Khảo sát 3 câu → gợi ý loại gói + list gói"
+    },
+    {
+      "name": "Public — Banners",
+      "description": "Carousel banner trang chủ"
+    },
+    {
+      "name": "Me (Khách)",
+      "description": "Profile & đơn của tôi (Bearer CUSTOMER)"
+    },
+    {
+      "name": "Admin — Auth",
+      "description": "Đăng nhập admin"
+    },
+    {
+      "name": "Admin — Packages",
+      "description": "CRUD gói cước"
+    },
+    {
+      "name": "Admin — Leads",
+      "description": "Quản lý lead"
+    },
+    {
+      "name": "Admin — Banners",
+      "description": "CRUD banner"
+    },
+    {
+      "name": "Admin — FAQs",
+      "description": "CRUD FAQ"
+    },
+    {
+      "name": "Admin — Navigation",
+      "description": "CRUD menu"
+    },
+    {
+      "name": "Admin — Package quiz",
+      "description": "CRUD bộ câu hỏi gợi ý"
+    },
+    {
+      "name": "Admin — Uploads",
+      "description": "Upload ảnh Cloudinary"
+    }
+  ],
+  "servers": [
+    {
+      "url": "http://localhost:3000/api/v1",
+      "description": "Local development"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "access-token": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http",
+        "description": "accessToken từ login/register/refresh"
+      },
+      "cookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "refreshToken",
+        "description": "Refresh JWT — tự gửi khi credentials: true"
+      }
+    },
+    "schemas": {
+      "RegisterDto": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "duong79",
+            "description": "Tên đăng nhập (username)"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 8,
+            "example": "SecretPass1"
+          },
+          "fullName": {
+            "type": "string",
+            "example": "Nguyễn Văn A"
+          },
+          "email": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "username",
+          "password",
+          "fullName"
+        ]
+      },
+      "AuthUserResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "object",
+            "nullable": true
+          },
+          "defaultAddress": {
+            "type": "object",
+            "nullable": true
+          },
+          "role": {
+            "type": "string",
+            "example": "CUSTOMER"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "username",
+          "fullName",
+          "role"
+        ]
+      },
+      "AdminProfileResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "example": "ADMIN"
+          }
+        },
+        "required": [
+          "id",
+          "email",
+          "role"
+        ]
+      },
+      "LoginResponseDto": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "description": "JWT access token — gửi header Authorization: Bearer <token>"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "CUSTOMER",
+              "ADMIN"
+            ]
+          },
+          "user": {
+            "$ref": "#/components/schemas/AuthUserResponseDto"
+          },
+          "admin": {
+            "$ref": "#/components/schemas/AdminProfileResponseDto"
+          },
+          "kind": {
+            "type": "string",
+            "example": "customer"
+          }
+        },
+        "required": [
+          "accessToken",
+          "role"
+        ]
+      },
+      "ApiErrorResponseDto": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "number",
+            "example": 400
+          },
+          "message": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ],
+            "example": "Số điện thoại không hợp lệ"
+          },
+          "error": {
+            "type": "string",
+            "example": "Bad Request"
+          }
+        },
+        "required": [
+          "statusCode",
+          "message",
+          "error"
+        ]
+      },
+      "UnifiedLoginDto": {
+        "type": "object",
+        "properties": {
+          "account": {
+            "type": "string",
+            "example": "admin1",
+            "description": "Admin: email đăng nhập. Khách: username."
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "account",
+          "password"
+        ]
+      },
+      "LoginDto": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "duong79"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ]
+      },
+      "RefreshResponseDto": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "accessToken",
+          "role"
+        ]
+      },
+      "SessionResponseDto": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/AuthUserResponseDto"
+          }
+        },
+        "required": [
+          "role"
+        ]
+      },
+      "OkResponseDto": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "example": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "PackagePublicDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "example": "internet-giga"
+          },
+          "name": {
+            "type": "string"
+          },
+          "tagline": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "INTERNET",
+              "SPEEDX",
+              "FPT_PLAY",
+              "CAMERA",
+              "SERVICE"
+            ]
+          },
+          "price": {
+            "type": "number"
+          },
+          "heroImage": {
+            "type": "string"
+          },
+          "bannerImage": {
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Object metadata (downloadMbps, audience, …)"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "name"
+        ]
+      },
+      "CreateLeadDto": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string",
+            "example": "0912345678"
+          },
+          "installAddress": {
+            "type": "string"
+          },
+          "packageId": {
+            "type": "string",
+            "description": "Nếu có, phải là gói đang active để snapshot"
+          }
+        },
+        "required": [
+          "fullName",
+          "phone",
+          "installAddress"
+        ]
+      },
+      "PackageSnapshotDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "price": {
+            "type": "object",
+            "nullable": true
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "name",
+          "type"
+        ]
+      },
+      "LeadCreateResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "example": "NEW"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "installAddress": {
+            "type": "string"
+          },
+          "packageId": {
+            "type": "object",
+            "nullable": true
+          },
+          "packageSnapshot": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PackageSnapshotDto"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "createdAt",
+          "fullName",
+          "phone",
+          "installAddress"
+        ]
+      },
+      "LeadPublicItemDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "installAddress": {
+            "type": "string"
+          },
+          "packageId": {
+            "type": "object",
+            "nullable": true
+          },
+          "packageSnapshot": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PackageSnapshotDto"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "createdAt",
+          "fullName",
+          "phone",
+          "installAddress"
+        ]
+      },
+      "LeadHistoryResponseDto": {
+        "type": "object",
+        "properties": {
+          "phone": {
+            "type": "string",
+            "example": "0912345678"
+          },
+          "total": {
+            "type": "number"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LeadPublicItemDto"
+            }
+          }
+        },
+        "required": [
+          "phone",
+          "total",
+          "items"
+        ]
+      },
+      "UpdateMeDto": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string"
+          },
+          "defaultAddress": {
+            "type": "string"
+          },
+          "email": {
+            "type": "object",
+            "nullable": true,
+            "description": "Gửi null hoặc chuỗi rỗng để xóa email"
+          }
+        }
+      },
+      "MyLeadsListResponseDto": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LeadPublicItemDto"
+            }
+          },
+          "total": {
+            "type": "number"
+          },
+          "page": {
+            "type": "number"
+          },
+          "limit": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "page",
+          "limit"
+        ]
+      },
+      "BannerPublicItemDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "packageId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "imageUrl"
+        ]
+      },
+      "BannerListResponseDto": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BannerPublicItemDto"
+            }
+          }
+        },
+        "required": [
+          "items"
+        ]
+      },
+      "CreateBannerDto": {
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "type": "string"
+          },
+          "bannerImage": {
+            "type": "string",
+            "description": "Alias FE: bannerImage"
+          },
+          "title": {
+            "type": "string"
+          },
+          "subtitle": {
+            "type": "string"
+          },
+          "packageId": {
+            "type": "string"
+          },
+          "sortOrder": {
+            "type": "number"
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        }
+      },
+      "UpdateBannerDto": {
+        "type": "object",
+        "properties": {
+          "imageUrl": {
+            "type": "string"
+          },
+          "bannerImage": {
+            "type": "string",
+            "description": "Alias FE: bannerImage"
+          },
+          "title": {
+            "type": "string"
+          },
+          "subtitle": {
+            "type": "string"
+          },
+          "packageId": {
+            "type": "string"
+          },
+          "sortOrder": {
+            "type": "number"
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        }
+      },
+      "FaqPublicItemDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "question": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string",
+            "description": "Hỗ trợ xuống dòng \\n"
+          },
+          "displayOrder": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "question",
+          "answer",
+          "displayOrder"
+        ]
+      },
+      "FaqListResponseDto": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FaqPublicItemDto"
+            }
+          }
+        },
+        "required": [
+          "items"
+        ]
+      },
+      "CreateFaqDto": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "string",
+            "example": "Làm sao để đăng ký gói Internet?"
+          },
+          "answer": {
+            "type": "string",
+            "example": "Bạn chọn gói trên trang chủ, điền form đăng ký.\nChúng tôi sẽ liên hệ trong 24h.",
+            "description": "Nội dung trả lời, hỗ trợ xuống dòng (\\n)"
+          },
+          "displayOrder": {
+            "type": "number",
+            "default": 0,
+            "description": "Số nhỏ hiển thị trước"
+          },
+          "isVisible": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "question",
+          "answer"
+        ]
+      },
+      "UpdateFaqDto": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "string",
+            "example": "Làm sao để đăng ký gói Internet?"
+          },
+          "answer": {
+            "type": "string",
+            "example": "Bạn chọn gói trên trang chủ, điền form đăng ký.\nChúng tôi sẽ liên hệ trong 24h.",
+            "description": "Nội dung trả lời, hỗ trợ xuống dòng (\\n)"
+          },
+          "displayOrder": {
+            "type": "number",
+            "default": 0,
+            "description": "Số nhỏ hiển thị trước"
+          },
+          "isVisible": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "NavigationMenuItemDto": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string",
+            "example": "/#internet"
+          },
+          "packageCode": {
+            "type": "object",
+            "nullable": true
+          },
+          "isNew": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "label",
+          "link"
+        ]
+      },
+      "NavigationMenuGroupDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string",
+            "example": "wifi"
+          },
+          "displayOrder": {
+            "type": "number"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NavigationMenuItemDto"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "icon",
+          "displayOrder",
+          "items"
+        ]
+      },
+      "NavigationListResponseDto": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NavigationMenuGroupDto"
+            }
+          }
+        },
+        "required": [
+          "items"
+        ]
+      },
+      "ReorderNavigationDto": {
+        "type": "object",
+        "properties": {
+          "ids": {
+            "description": "Danh sách id nhóm menu theo thứ tự cột trái → phải",
+            "example": [
+              "674a...",
+              "674b..."
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "ids"
+        ]
+      },
+      "MenuItemDto": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "example": "Internet Wi-Fi 7"
+          },
+          "link": {
+            "type": "string",
+            "example": "/#internet",
+            "description": "URL hoặc hash anchor (/#internet, /goi/...)"
+          },
+          "packageCode": {
+            "type": "string",
+            "example": "internet-giga",
+            "description": "Mã gói — FE ưu tiên link /goi/:code"
+          },
+          "displayOrder": {
+            "type": "number",
+            "default": 0,
+            "description": "Thứ tự item trong cột"
+          },
+          "isNew": {
+            "type": "boolean",
+            "default": false,
+            "description": "Hiển thị tag \"Mới\" màu đỏ"
+          },
+          "isVisible": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "label",
+          "link"
+        ]
+      },
+      "CreateMenuDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Internet - Wifi"
+          },
+          "icon": {
+            "type": "string",
+            "example": "wifi",
+            "description": "Mã icon: wifi | play-circle | cctv | home-wifi | shield | plus-circle"
+          },
+          "displayOrder": {
+            "type": "number",
+            "default": 0,
+            "description": "Thứ tự cột từ trái sang phải"
+          },
+          "isVisible": {
+            "type": "boolean",
+            "default": true
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MenuItemDto"
+            }
+          }
+        },
+        "required": [
+          "title"
+        ]
+      },
+      "UpdateMenuDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Internet - Wifi"
+          },
+          "icon": {
+            "type": "string",
+            "example": "wifi",
+            "description": "Mã icon: wifi | play-circle | cctv | home-wifi | shield | plus-circle"
+          },
+          "displayOrder": {
+            "type": "number",
+            "default": 0,
+            "description": "Thứ tự cột từ trái sang phải"
+          },
+          "isVisible": {
+            "type": "boolean",
+            "default": true
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MenuItemDto"
+            }
+          }
+        }
+      },
+      "PackageQuizOptionPublicDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          },
+          "displayOrder": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "code",
+          "label",
+          "icon",
+          "displayOrder"
+        ]
+      },
+      "PackageQuizQuestionPublicDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "object",
+            "nullable": true
+          },
+          "multiSelect": {
+            "type": "boolean"
+          },
+          "displayOrder": {
+            "type": "number"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PackageQuizOptionPublicDto"
+            }
+          }
+        },
+        "required": [
+          "code",
+          "title",
+          "multiSelect",
+          "displayOrder",
+          "options"
+        ]
+      },
+      "PackageQuizPublicDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "example": "home-needs"
+          },
+          "tagline": {
+            "type": "object",
+            "nullable": true
+          },
+          "icon": {
+            "type": "string"
+          },
+          "questionCount": {
+            "type": "number",
+            "example": 3
+          },
+          "questions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PackageQuizQuestionPublicDto"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "icon",
+          "questionCount",
+          "questions"
+        ]
+      },
+      "QuizAnswerDto": {
+        "type": "object",
+        "properties": {
+          "questionCode": {
+            "type": "string",
+            "example": "wifi-usage"
+          },
+          "optionCodes": {
+            "example": [
+              "media",
+              "game"
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "questionCode",
+          "optionCodes"
+        ]
+      },
+      "RecommendPackageQuizDto": {
+        "type": "object",
+        "properties": {
+          "quizCode": {
+            "type": "string",
+            "example": "home-needs"
+          },
+          "answers": {
+            "description": "Trả lời từng câu hỏi — ưu tiên dùng field này",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QuizAnswerDto"
+            }
+          },
+          "questionCode": {
+            "type": "string",
+            "example": "wifi-usage"
+          },
+          "optionCodes": {
+            "example": [
+              "study"
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "PackageQuizAnswerSummaryDto": {
+        "type": "object",
+        "properties": {
+          "questionCode": {
+            "type": "string"
+          },
+          "optionCodes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "questionCode",
+          "optionCodes"
+        ]
+      },
+      "PackageQuizRankingDto": {
+        "type": "object",
+        "properties": {
+          "packageType": {
+            "type": "string",
+            "enum": [
+              "INTERNET",
+              "SPEEDX",
+              "FPT_PLAY",
+              "CAMERA",
+              "SERVICE"
+            ]
+          },
+          "score": {
+            "type": "number"
+          },
+          "label": {
+            "type": "string"
+          },
+          "sectionId": {
+            "type": "string",
+            "example": "#internet"
+          }
+        },
+        "required": [
+          "packageType",
+          "score",
+          "label",
+          "sectionId"
+        ]
+      },
+      "PackageQuizRecommendResponseDto": {
+        "type": "object",
+        "properties": {
+          "quizCode": {
+            "type": "string",
+            "example": "home-needs"
+          },
+          "answers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PackageQuizAnswerSummaryDto"
+            }
+          },
+          "recommendedTypes": {
+            "example": [
+              "FPT_PLAY",
+              "INTERNET"
+            ],
+            "description": "INTERNET | SPEEDX | FPT_PLAY | CAMERA | SERVICE",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "primaryType": {
+            "type": "string",
+            "enum": [
+              "INTERNET",
+              "SPEEDX",
+              "FPT_PLAY",
+              "CAMERA",
+              "SERVICE"
+            ]
+          },
+          "scrollToSection": {
+            "type": "string",
+            "example": "#truyen-hinh"
+          },
+          "resultsPath": {
+            "type": "string",
+            "example": "/ket-qua-tu-van?types=FPT_PLAY,INTERNET&primary=FPT_PLAY",
+            "description": "FE navigate tới màn hình danh sách gói gợi ý"
+          },
+          "message": {
+            "type": "string"
+          },
+          "rankings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PackageQuizRankingDto"
+            }
+          },
+          "packages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PackagePublicDto"
+            }
+          },
+          "totalPackages": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "quizCode",
+          "answers",
+          "recommendedTypes",
+          "primaryType",
+          "scrollToSection",
+          "resultsPath",
+          "message",
+          "rankings",
+          "packages",
+          "totalPackages"
+        ]
+      },
+      "QuizTypeWeightDto": {
+        "type": "object",
+        "properties": {
+          "packageType": {
+            "type": "string",
+            "enum": [
+              "INTERNET",
+              "SPEEDX",
+              "FPT_PLAY",
+              "CAMERA",
+              "SERVICE"
+            ],
+            "example": "INTERNET"
+          },
+          "weight": {
+            "type": "number",
+            "default": 1
+          }
+        },
+        "required": [
+          "packageType",
+          "weight"
+        ]
+      },
+      "QuizOptionDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "study"
+          },
+          "label": {
+            "type": "string",
+            "example": "Học tập / Làm việc"
+          },
+          "icon": {
+            "type": "string",
+            "example": "laptop"
+          },
+          "displayOrder": {
+            "type": "number",
+            "default": 0
+          },
+          "isVisible": {
+            "type": "boolean",
+            "default": true
+          },
+          "typeWeights": {
+            "description": "Trọng số gợi ý loại gói (INTERNET, SPEEDX, …)",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QuizTypeWeightDto"
+            }
+          }
+        },
+        "required": [
+          "code",
+          "label",
+          "typeWeights"
+        ]
+      },
+      "QuizQuestionDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "wifi-usage"
+          },
+          "title": {
+            "type": "string",
+            "example": "Bạn chủ yếu sử dụng WiFi tại nhà để làm gì?"
+          },
+          "description": {
+            "type": "string"
+          },
+          "multiSelect": {
+            "type": "boolean",
+            "default": true
+          },
+          "displayOrder": {
+            "type": "number",
+            "default": 0
+          },
+          "isVisible": {
+            "type": "boolean",
+            "default": true
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QuizOptionDto"
+            }
+          }
+        },
+        "required": [
+          "code",
+          "title",
+          "options"
+        ]
+      },
+      "CreatePackageQuizDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "home-needs"
+          },
+          "tagline": {
+            "type": "string",
+            "example": "Gói Internet dành cho bạn"
+          },
+          "icon": {
+            "type": "string",
+            "example": "wifi"
+          },
+          "isVisible": {
+            "type": "boolean",
+            "default": true
+          },
+          "displayOrder": {
+            "type": "number",
+            "default": 0
+          },
+          "questions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QuizQuestionDto"
+            }
+          }
+        },
+        "required": [
+          "code",
+          "questions"
+        ]
+      },
+      "UpdatePackageQuizDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "home-needs"
+          },
+          "tagline": {
+            "type": "string",
+            "example": "Gói Internet dành cho bạn"
+          },
+          "icon": {
+            "type": "string",
+            "example": "wifi"
+          },
+          "isVisible": {
+            "type": "boolean",
+            "default": true
+          },
+          "displayOrder": {
+            "type": "number",
+            "default": 0
+          },
+          "questions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QuizQuestionDto"
+            }
+          }
+        }
+      },
+      "AdminLoginDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "Email hoặc username admin (vd. admin1, admin@example.com)",
+            "example": "admin1"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "CreatePackageDto": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "INTERNET",
+              "SPEEDX",
+              "FPT_PLAY",
+              "CAMERA",
+              "SERVICE"
+            ]
+          },
+          "code": {
+            "type": "string",
+            "example": "internet-giga"
+          },
+          "name": {
+            "type": "string"
+          },
+          "shortName": {
+            "type": "string"
+          },
+          "displayCode": {
+            "type": "string"
+          },
+          "shortDescription": {
+            "type": "string",
+            "description": "Alias FE: tagline"
+          },
+          "tagline": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "promoBadge": {
+            "type": "string"
+          },
+          "price": {
+            "type": "object",
+            "nullable": true
+          },
+          "monthlyPrice": {
+            "type": "object",
+            "description": "Alias FE: monthlyPrice"
+          },
+          "priceNote": {
+            "type": "string"
+          },
+          "billingCycle": {
+            "type": "string",
+            "enum": [
+              "MONTHLY",
+              "ONCE",
+              "FREE"
+            ]
+          },
+          "speedLabel": {
+            "type": "string"
+          },
+          "specCaption": {
+            "type": "string"
+          },
+          "specLine": {
+            "type": "string"
+          },
+          "statIcon": {
+            "type": "string",
+            "enum": [
+              "gauge",
+              "tv",
+              "camera",
+              "sparkles"
+            ]
+          },
+          "features": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "bullets": {
+            "description": "Alias: bullets, featureList",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "imageUrl": {
+            "type": "string",
+            "description": "Ít nhất một trong imageUrl / heroImage"
+          },
+          "heroImage": {
+            "type": "string",
+            "description": "Alias FE: heroImage"
+          },
+          "bannerImage": {
+            "type": "string",
+            "description": "Ảnh banner carousel trang chủ (21:9)"
+          },
+          "accentImageUrl": {
+            "type": "string"
+          },
+          "accentImage": {
+            "type": "string",
+            "description": "Alias FE: accentImage, secondaryImage"
+          },
+          "metadata": {
+            "type": "object"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "sortOrder": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "type",
+          "code",
+          "name",
+          "billingCycle"
+        ]
+      },
+      "UpdatePackageDto": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "INTERNET",
+              "SPEEDX",
+              "FPT_PLAY",
+              "CAMERA",
+              "SERVICE"
+            ]
+          },
+          "code": {
+            "type": "string",
+            "example": "internet-giga"
+          },
+          "name": {
+            "type": "string"
+          },
+          "shortName": {
+            "type": "string"
+          },
+          "displayCode": {
+            "type": "string"
+          },
+          "shortDescription": {
+            "type": "string",
+            "description": "Alias FE: tagline"
+          },
+          "tagline": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "promoBadge": {
+            "type": "string"
+          },
+          "price": {
+            "type": "object",
+            "nullable": true
+          },
+          "monthlyPrice": {
+            "type": "object",
+            "description": "Alias FE: monthlyPrice"
+          },
+          "priceNote": {
+            "type": "string"
+          },
+          "billingCycle": {
+            "type": "string",
+            "enum": [
+              "MONTHLY",
+              "ONCE",
+              "FREE"
+            ]
+          },
+          "speedLabel": {
+            "type": "string"
+          },
+          "specCaption": {
+            "type": "string"
+          },
+          "specLine": {
+            "type": "string"
+          },
+          "statIcon": {
+            "type": "string",
+            "enum": [
+              "gauge",
+              "tv",
+              "camera",
+              "sparkles"
+            ]
+          },
+          "features": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "bullets": {
+            "description": "Alias: bullets, featureList",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "imageUrl": {
+            "type": "string",
+            "description": "Ít nhất một trong imageUrl / heroImage"
+          },
+          "heroImage": {
+            "type": "string",
+            "description": "Alias FE: heroImage"
+          },
+          "bannerImage": {
+            "type": "string",
+            "description": "Ảnh banner carousel trang chủ (21:9)"
+          },
+          "accentImageUrl": {
+            "type": "string"
+          },
+          "accentImage": {
+            "type": "string",
+            "description": "Alias FE: accentImage, secondaryImage"
+          },
+          "metadata": {
+            "type": "object"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "sortOrder": {
+            "type": "number"
+          }
+        }
+      },
+      "PatchAdminLeadDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "NEW",
+              "CONTACTED",
+              "CONVERTED",
+              "CANCELLED"
+            ]
+          },
+          "adminNote": {
+            "type": "string"
+          }
+        }
+      },
+      "UploadFromUrlDto": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "example": "https://example.com/image.jpg"
+          },
+          "folder": {
+            "type": "string",
+            "description": "Thư mục con trên Cloudinary (mặc định từ env CLOUDINARY_FOLDER)",
+            "example": "packages/heroes"
+          }
+        },
+        "required": [
+          "url"
+        ]
+      },
+      "LookupLeadsByPhoneQueryDto": {
+        "type": "object",
+        "properties": {
+          "phone": {
+            "type": "string",
+            "example": "0912345678",
+            "description": "Số điện thoại đã dùng khi đăng ký"
+          }
+        },
+        "required": [
+          "phone"
+        ]
+      },
+      "PublicPackagesQueryDto": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "INTERNET",
+              "SPEEDX",
+              "FPT_PLAY",
+              "CAMERA",
+              "SERVICE"
+            ]
+          }
+        }
+      },
+      "PackageQuizQueryDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "home-needs",
+            "description": "Mã bộ câu hỏi — mặc định quiz visible đầu tiên"
+          }
+        }
+      }
+    }
+  }
+}

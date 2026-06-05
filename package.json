@@ -25,7 +25,8 @@
     "db:drop-sample-mflix": "ts-node -r tsconfig-paths/register src/seed/drop-sample-mflix.ts",
     "db:up": "docker compose up mongo -d",
     "db:down": "docker compose stop mongo",
-    "test:cloudinary": "ts-node -r tsconfig-paths/register src/seed/test-cloudinary.ts"
+    "test:cloudinary": "ts-node -r tsconfig-paths/register src/seed/test-cloudinary.ts",
+    "swagger:export": "ts-node -r tsconfig-paths/register src/swagger/generate-openapi.ts"
   },
   "dependencies": {
     "@nestjs/common": "^10.4.15",
@@ -38,6 +39,7 @@
     "@nestjs/swagger": "^7.4.2",
     "@nestjs/throttler": "^6.4.0",
     "argon2": "^0.41.1",
+    "axios": "^1.17.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "cloudinary": "^2.10.0",

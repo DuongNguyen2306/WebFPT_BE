@@ -6,12 +6,14 @@ import { LeadsPublicController } from './leads-public.controller';
 import { LeadRateLimitService } from './lead-rate-limit.service';
 import { PackagesModule } from '../packages/packages.module';
 import { AuthModule } from '../auth/auth.module';
+import { NotificationsModule } from '../notifications/notifications.module';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Lead.name, schema: LeadSchema }]),
     PackagesModule,
     AuthModule,
+    NotificationsModule,
   ],
   controllers: [LeadsPublicController],
   providers: [LeadsService, LeadRateLimitService],

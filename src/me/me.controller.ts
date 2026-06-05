@@ -8,7 +8,13 @@ import {
   UnauthorizedException,
   UseGuards,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOkResponse,
+  ApiOperation,
+  ApiTags,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
 import { CustomersService } from '../customers/customers.service';
 import { LeadsService } from '../leads/leads.service';
 import { JwtAccessAuthGuard } from '../guards/jwt-access.guard';
@@ -17,6 +23,11 @@ import { RequestUser } from '../auth/jwt.types';
 import { AppRole } from '../common/enums';
 import { UpdateMeDto } from './dto/update-me.dto';
 import { PaginationQueryDto } from '../common/dto/pagination.query.dto';
+import {
+  ApiErrorResponseDto,
+  AuthUserResponseDto,
+  MyLeadsListResponseDto,
+} from '../swagger/swagger-responses.dto';
 
 @ApiTags('Me (Khách)')
 @ApiBearerAuth('access-token')
@@ -29,7 +40,9 @@ export class MeController {
   ) {}
 
   @Get()
-  @ApiOperation({ summary: 'Thông tin profile khách' })
+  @ApiOperation({ summary: 'Profile khách đang đăng nhập' })
+  @ApiOkResponse({ type: AuthUserResponseDto })
+  @ApiUnauthorizedResponse({ type: ApiErrorResponseDto })
   async getMe(@Req() req: { user: RequestUser }) {
     const c = await this.customers.findById(req.user.sub);
     if (!c) {
@@ -48,6 +61,7 @@ export class MeController {
 
   @Patch()
   @ApiOperation({ summary: 'Cập nhật profile' })
+  @ApiOkResponse({ type: AuthUserResponseDto })
   async patchMe(@Req() req: { user: RequestUser }, @Body() dto: UpdateMeDto) {
     const updated = await this.customers.updateProfile(req.user.sub, {
       fullName: dto.fullName,
@@ -69,7 +83,11 @@ export class MeController {
   }
 
   @Get('leads')
-  @ApiOperation({ summary: 'Lead đã gửi khi đã đăng nhập (customerId)' })
+  @ApiOperation({
+    summary: 'Đơn đã gửi khi đăng nhập (customerId)',
+    description: 'Khác GET /leads/history — chỉ đơn gắn tài khoản.',
+  })
+  @ApiOkResponse({ type: MyLeadsListResponseDto })
   async myLeads(@Req() req: { user: RequestUser }, @Query() q: PaginationQueryDto) {
     const page = q.page ?? 1;
     const limit = q.limit ?? 20;

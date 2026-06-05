@@ -1,15 +1,17 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { BannersService } from './banners.service';
 import { toBannerFeList } from './banner-fe.mapper';
+import { BannerListResponseDto } from '../swagger/swagger-responses.dto';
 
-@ApiTags('Banners')
+@ApiTags('Public — Banners')
 @Controller('banners')
 export class BannersPublicController {
   constructor(private readonly banners: BannersService) {}
 
   @Get()
-  @ApiOperation({ summary: 'Danh sách banner carousel trang chủ (public)' })
+  @ApiOperation({ summary: 'Banner carousel trang chủ (isActive=true)' })
+  @ApiOkResponse({ type: BannerListResponseDto })
   async list() {
     const docs = await this.banners.findActivePublic();
     return { items: toBannerFeList(docs as Record<string, unknown>[]) };

@@ -1,5 +1,13 @@
 import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req, Res, UseGuards } from '@nestjs/common';
-import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
 import type { Request, Response } from 'express';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
@@ -10,6 +18,13 @@ import { ConfigService } from '@nestjs/config';
 import { clearRefreshTokenCookie, setRefreshTokenCookie } from './refresh-cookie.helper';
 import { JwtAccessAuthGuard } from '../guards/jwt-access.guard';
 import { RequestUser } from './jwt.types';
+import {
+  ApiErrorResponseDto,
+  LoginResponseDto,
+  OkResponseDto,
+  RefreshResponseDto,
+  SessionResponseDto,
+} from '../swagger/swagger-responses.dto';
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -22,7 +37,8 @@ export class AuthController {
   @Post('register')
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Đăng ký khách hàng (CUSTOMER)' })
-  @ApiResponse({ status: 201 })
+  @ApiCreatedResponse({ type: LoginResponseDto })
+  @ApiResponse({ status: 409, type: ApiErrorResponseDto, description: 'Username đã tồn tại' })
   async register(
     @Body() dto: RegisterDto,
     @Res({ passthrough: true }) res: Response,
@@ -41,8 +57,10 @@ export class AuthController {
   @ApiOperation({
     summary: 'Đăng nhập chung (admin hoặc khách)',
     description:
-      'Body: account + password. BE thử admin (email) rồi khách (username). Trả role để FE redirect.',
+      'Body: `{ account, password }`. Admin: account = email. Khách: account = username. Set cookie refreshToken.',
   })
+  @ApiOkResponse({ type: LoginResponseDto })
+  @ApiUnauthorizedResponse({ type: ApiErrorResponseDto })
   async loginUnified(@Body() dto: UnifiedLoginDto, @Res({ passthrough: true }) res: Response) {
     const result = await this.auth.loginUnified(dto.account, dto.password);
     setRefreshTokenCookie(res, this.config, result.refreshToken);
@@ -52,6 +70,8 @@ export class AuthController {
 
   @Post('login')
   @ApiOperation({ summary: 'Đăng nhập khách (username + password)' })
+  @ApiOkResponse({ type: LoginResponseDto })
+  @ApiUnauthorizedResponse({ type: ApiErrorResponseDto })
   async login(@Body() dto: LoginDto, @Res({ passthrough: true }) res: Response) {
     const { accessToken, refreshToken, role, user } = await this.auth.loginCustomer(
       dto.username,
@@ -63,9 +83,11 @@ export class AuthController {
 
   @Post('refresh')
   @ApiOperation({
-    summary: 'Lấy access token mới',
-    description: 'Đọc refresh token từ cookie HttpOnly `refreshToken`.',
+    summary: 'Làm mới access token',
+    description: 'Cookie `refreshToken` (credentials: include). Không cần Bearer.',
   })
+  @ApiOkResponse({ type: RefreshResponseDto })
+  @ApiUnauthorizedResponse({ type: ApiErrorResponseDto })
   async refresh(@Req() req: Request, @Res({ passthrough: true }) res: Response) {
     const token = req.cookies?.[REFRESH_TOKEN_COOKIE] as string | undefined;
     const result = await this.auth.refresh(token);
@@ -75,16 +97,16 @@ export class AuthController {
   @Get('session')
   @UseGuards(JwtAccessAuthGuard)
   @ApiBearerAuth('access-token')
-  @ApiOperation({
-    summary: 'Phiên đăng nhập hiện tại (CUSTOMER hoặc ADMIN)',
-    description: 'Dùng access token. Trả role + profile tương ứng.',
-  })
+  @ApiOperation({ summary: 'Phiên hiện tại (CUSTOMER hoặc ADMIN)' })
+  @ApiOkResponse({ type: SessionResponseDto })
+  @ApiUnauthorizedResponse({ type: ApiErrorResponseDto })
   async session(@Req() req: { user: RequestUser }) {
     return this.auth.getSessionFromAccess(req.user);
   }
 
   @Post('logout')
-  @ApiOperation({ summary: 'Xóa refresh cookie' })
+  @ApiOperation({ summary: 'Xóa cookie refreshToken' })
+  @ApiOkResponse({ type: OkResponseDto })
   logout(@Res({ passthrough: true }) res: Response) {
     clearRefreshTokenCookie(res, this.config);
     return { ok: true };

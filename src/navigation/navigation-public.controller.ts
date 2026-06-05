@@ -1,6 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { NavigationService } from './navigation.service';
+import { NavigationListResponseDto } from '../swagger/swagger-responses.dto';
 
 @ApiTags('Public — Navigation')
 @Controller('navigation')
@@ -9,8 +10,10 @@ export class NavigationPublicController {
 
   @Get()
   @ApiOperation({
-    summary: 'Menu điều hướng mega-menu (nhóm + items visible, sort displayOrder)',
+    summary: 'Mega-menu (nhóm + items visible)',
+    description: 'FE: icon string → map Lucide. Item isNew → badge「Mới」.',
   })
+  @ApiOkResponse({ type: NavigationListResponseDto })
   list() {
     return this.navigation.findVisiblePublic();
   }

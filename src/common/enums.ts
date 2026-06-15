@@ -16,6 +16,7 @@ export enum LeadStatus {
   NEW = 'NEW',
   CONTACTED = 'CONTACTED',
   CONVERTED = 'CONVERTED',
+  INSTALLED = 'INSTALLED',
   CANCELLED = 'CANCELLED',
 }
 

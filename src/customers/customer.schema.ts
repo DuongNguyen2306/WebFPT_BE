@@ -18,6 +18,10 @@ export class Customer {
   @Prop({ type: String, required: true, trim: true })
   fullName!: string;
 
+  /** SĐT liên hệ / tra cứu đơn — dùng ghép lịch sử đăng ký theo phone */
+  @Prop({ type: String, trim: true, sparse: true, index: true })
+  phone?: string;
+
   @Prop({ type: String, trim: true })
   defaultAddress?: string;
 

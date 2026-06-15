@@ -24,6 +24,7 @@ export class Lead {
     name: string;
     price: number | null;
     type: string;
+    speedLabel?: string | null;
   } | null;
 
   @Prop({ type: Types.ObjectId, ref: 'Customer', default: null })

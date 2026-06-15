@@ -15,7 +15,7 @@ export class PatchPackageRegistrationDto {
 
   @ApiPropertyOptional({
     enum: LeadStatus,
-    description: 'NEW=Mới | CONTACTED=Đang tư vấn | CONVERTED=Đã chốt | CANCELLED=Hủy',
+    description: 'NEW=Mới | CONTACTED=Đang tư vấn | CONVERTED=Đã chốt | INSTALLED=Đã lắp đặt | CANCELLED=Hủy',
   })
   @IsOptional()
   @IsEnum(LeadStatus)

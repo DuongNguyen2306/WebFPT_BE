@@ -16,6 +16,7 @@ export function toLeadPublicItem(doc: LeanLead) {
           name: snap.name,
           price: snap.price ?? null,
           type: snap.type,
+          speedLabel: snap.speedLabel ?? null,
         }
       : null,
   };

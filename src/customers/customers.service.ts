@@ -1,7 +1,8 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import { ConflictException, Injectable, BadRequestException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Customer, CustomerDocument } from './customer.schema';
+import { normalizeVnPhone } from '../common/utils/phone.util';
 
 @Injectable()
 export class CustomersService {
@@ -41,7 +42,12 @@ export class CustomersService {
 
   async updateProfile(
     id: string,
-    patch: { fullName?: string; defaultAddress?: string; email?: string | null },
+    patch: {
+      fullName?: string;
+      defaultAddress?: string;
+      email?: string | null;
+      phone?: string | null;
+    },
   ) {
     if (patch.email !== undefined && patch.email) {
       const other = await this.findByEmail(patch.email, id);
@@ -53,8 +59,20 @@ export class CustomersService {
     const $set: Record<string, unknown> = {};
     const $unset: Record<string, 1> = {};
 
-    if (patch.fullName !== undefined) $set.fullName = patch.fullName;
-    if (patch.defaultAddress !== undefined) $set.defaultAddress = patch.defaultAddress;
+    if (patch.fullName !== undefined) $set.fullName = patch.fullName.trim();
+    if (patch.defaultAddress !== undefined) $set.defaultAddress = patch.defaultAddress.trim();
+
+    if (patch.phone !== undefined) {
+      if (patch.phone === null || patch.phone === '') {
+        $unset.phone = 1;
+      } else {
+        const normalized = normalizeVnPhone(patch.phone);
+        if (!normalized) {
+          throw new BadRequestException('Số điện thoại không hợp lệ');
+        }
+        $set.phone = normalized;
+      }
+    }
 
     if (patch.email !== undefined) {
       if (patch.email === null || patch.email === '') {

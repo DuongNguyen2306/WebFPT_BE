@@ -8,6 +8,7 @@ import { PackagesModule } from './packages/packages.module';
 import { LeadsModule } from './leads/leads.module';
 import { AdminModule } from './admin/admin.module';
 import { CustomersModule } from './customers/customers.module';
+import { UsersModule } from './users/users.module';
 import { MeModule } from './me/me.module';
 import { BannersModule } from './banners/banners.module';
 import { FaqsModule } from './faqs/faqs.module';
@@ -37,6 +38,7 @@ import { PackageQuizModule } from './package-quiz/package-quiz.module';
     AuthModule,
     PackagesModule,
     LeadsModule,
+    UsersModule,
     MeModule,
     BannersModule,
     FaqsModule,

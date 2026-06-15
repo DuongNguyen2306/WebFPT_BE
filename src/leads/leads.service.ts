@@ -49,6 +49,7 @@ export class LeadsService {
         name: pkg.name,
         price: pkg.price ?? null,
         type: pkg.type,
+        speedLabel: pkg.speedLabel ?? null,
       };
     }
 
@@ -136,6 +137,31 @@ export class LeadsService {
   findForCustomer(customerId: string, page: number, limit: number) {
     const skip = (page - 1) * limit;
     const filter = { customerId: new Types.ObjectId(customerId) };
+    return Promise.all([
+      this.model.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit).lean().exec(),
+      this.model.countDocuments(filter).exec(),
+    ]).then(([items, total]) => ({ items, total, page, limit }));
+  }
+
+  /** Lịch sử đăng ký: đơn gắn tài khoản hoặc cùng SĐT profile */
+  findRegistrationsForUser(
+    customerId: string,
+    profilePhone: string | null | undefined,
+    page: number,
+    limit: number,
+  ) {
+    const skip = (page - 1) * limit;
+    const or: Record<string, unknown>[] = [
+      { customerId: new Types.ObjectId(customerId) },
+    ];
+
+    const phone = profilePhone ? normalizeVnPhone(profilePhone) ?? profilePhone : null;
+    if (phone) {
+      or.push({ phone });
+    }
+
+    const filter = or.length > 1 ? { $or: or } : or[0];
+
     return Promise.all([
       this.model.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit).lean().exec(),
       this.model.countDocuments(filter).exec(),

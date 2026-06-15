@@ -237,4 +237,58 @@ describe('Telecom API (e2e)', () => {
     expect(res.body.resultsPath).toContain('ket-qua-tu-van');
     expect(Array.isArray(res.body.packages)).toBe(true);
   });
+
+  it('GET/PATCH /users/profile and GET /users/registrations', async () => {
+    const username = `profile${Date.now().toString(36)}`;
+    const phone = '0909111222';
+
+    const reg = await request(app.getHttpServer())
+      .post('/api/v1/auth/register')
+      .send({
+        username,
+        password: 'Password123!',
+        fullName: 'Profile User',
+      })
+      .expect(201);
+
+    const token = reg.body.accessToken as string;
+
+    await request(app.getHttpServer())
+      .patch('/api/v1/users/profile')
+      .set('Authorization', `Bearer ${token}`)
+      .send({
+        phone,
+        address: '789 Đường Profile, Q3, TP.HCM',
+        fullName: 'Profile User Updated',
+      })
+      .expect(200)
+      .expect((res) => {
+        expect(res.body.fullName).toBe('Profile User Updated');
+        expect(res.body.phone).toBe(phone);
+        expect(res.body.address).toBe('789 Đường Profile, Q3, TP.HCM');
+      });
+
+    await request(app.getHttpServer())
+      .post('/api/v1/leads')
+      .set('Authorization', `Bearer ${token}`)
+      .set('X-Forwarded-For', '203.0.113.20')
+      .send({
+        fullName: 'Profile User Updated',
+        phone,
+        installAddress: '789 Đường Profile, Q3, TP.HCM',
+        packageId,
+      })
+      .expect(201);
+
+    const list = await request(app.getHttpServer())
+      .get('/api/v1/users/registrations')
+      .set('Authorization', `Bearer ${token}`)
+      .expect(200);
+
+    expect(list.body.total).toBeGreaterThanOrEqual(1);
+    expect(list.body.items[0].packageName).toBe('Internet E2E');
+    expect(list.body.items[0].speed).toBe('300 Mbps');
+    expect(list.body.items[0].statusLabel).toBe('Mới');
+    expect(list.body.items[0].createdAt).toBeDefined();
+  });
 });

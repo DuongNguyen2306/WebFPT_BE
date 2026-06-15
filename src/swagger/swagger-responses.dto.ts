@@ -33,6 +33,9 @@ export class AuthUserResponseDto {
   fullName!: string;
 
   @ApiPropertyOptional({ nullable: true })
+  phone?: string | null;
+
+  @ApiPropertyOptional({ nullable: true })
   email?: string | null;
 
   @ApiPropertyOptional({ nullable: true })
@@ -377,6 +380,69 @@ export class PackageQuizRecommendResponseDto {
 }
 
 // ——— Me ———
+export class UserProfileResponseDto {
+  @ApiProperty()
+  id!: string;
+
+  @ApiProperty()
+  username!: string;
+
+  @ApiProperty()
+  fullName!: string;
+
+  @ApiPropertyOptional({ nullable: true })
+  phone?: string | null;
+
+  @ApiPropertyOptional({ nullable: true, description: 'Địa chỉ lắp đặt mặc định' })
+  address?: string | null;
+
+  @ApiPropertyOptional({ nullable: true })
+  email?: string | null;
+
+  @ApiProperty({ example: 'CUSTOMER' })
+  role!: string;
+
+  @ApiPropertyOptional()
+  status?: string;
+}
+
+export class UserRegistrationItemDto {
+  @ApiProperty()
+  id!: string;
+
+  @ApiProperty({ example: 'Internet Giga' })
+  packageName!: string;
+
+  @ApiProperty({ example: 'NEW' })
+  status!: string;
+
+  @ApiProperty({ example: 'Mới' })
+  statusLabel!: string;
+
+  @ApiPropertyOptional({ nullable: true, example: '300 Mbps' })
+  speed?: string | null;
+
+  @ApiPropertyOptional({ nullable: true, example: 250000 })
+  price?: number | null;
+
+  @ApiProperty()
+  createdAt!: string;
+}
+
+export class UserRegistrationsListResponseDto {
+  @ApiProperty({ type: [UserRegistrationItemDto] })
+  items!: UserRegistrationItemDto[];
+
+  @ApiProperty()
+  total!: number;
+
+  @ApiProperty()
+  page!: number;
+
+  @ApiProperty()
+  limit!: number;
+}
+
 export class MyLeadsListResponseDto {
   @ApiProperty({ type: [LeadPublicItemDto] })
   items!: LeadPublicItemDto[];

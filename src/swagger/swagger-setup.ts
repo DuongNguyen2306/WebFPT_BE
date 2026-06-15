@@ -20,6 +20,8 @@ import {
   PackageQuizRecommendResponseDto,
   RefreshResponseDto,
   SessionResponseDto,
+  UserProfileResponseDto,
+  UserRegistrationsListResponseDto,
 } from './swagger-responses.dto';
 import { CreateLeadDto } from '../leads/dto/create-lead.dto';
 import { CreateFaqDto } from '../faqs/dto/create-faq.dto';
@@ -48,6 +50,8 @@ const SWAGGER_MODELS = [
   PackageQuizPublicDto,
   PackageQuizRecommendResponseDto,
   MyLeadsListResponseDto,
+  UserProfileResponseDto,
+  UserRegistrationsListResponseDto,
   BannerListResponseDto,
   RegisterDto,
   UnifiedLoginDto,
@@ -70,6 +74,7 @@ const SWAGGER_TAGS: Array<{ name: string; description: string }> = [
   { name: 'Public — Package quiz', description: 'Khảo sát 3 câu → gợi ý loại gói + list gói' },
   { name: 'Public — Banners', description: 'Carousel banner trang chủ' },
   { name: 'Me (Khách)', description: 'Profile & đơn của tôi (Bearer CUSTOMER)' },
+  { name: 'Users — Profile & Registrations', description: 'Hồ sơ & lịch sử đăng ký (Bearer CUSTOMER)' },
   { name: 'Admin — Auth', description: 'Đăng nhập admin' },
   { name: 'Admin — Packages', description: 'CRUD gói cước' },
   { name: 'Admin — Leads', description: 'Quản lý lead' },
